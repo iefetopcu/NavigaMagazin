@@ -1,0 +1,68 @@
+﻿@using NavigaMagazin.Models.Entity
+@using PagedList
+@using PagedList.Mvc
+@model PagedList.IPagedList<EbultenTable>
+@{
+    ViewBag.Title = "E-Bülten";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+<div class="page-header row no-gutters py-4">
+    <div class="col-6 col-sm-6 text-center text-sm-left mb-0">
+        <span class="text-uppercase page-subtitle">E-Bülten</span>
+    </div>
+
+
+    <div class="col-6 col-sm-6 text-center mb-0 ">
+        <a href="@Url.Action("ExcelExport","Ebulten")"><button class="btn btn-primary pull-right">Excel'e Aktar</button></a>
+    </div>
+</div>
+
+
+
+<div class="row">
+    <div class="col">
+        <div class="card card-small mb-4">
+            <div class="card-header border-bottom">
+                <h6 class="m-0">E-Bülten Abone Listesi</h6>
+            </div>
+            <div class="card-body p-0 pb-3 text-center">
+                <table class="table mb-0">
+                    <thead class="bg-light">
+                        <tr>
+                            <th scope="col" class="border-0">#</th>
+                            <th scope="col" class="border-0">Mail Adresi</th>
+                            <th scope="col" class="border-0">Abonelik Zamanı</th>
+                            <th scope="col" class="border-0">İşlem</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @{int i = 1;}
+                        @foreach (var ebulten in Model)
+                        {
+                            <tr>
+                                <td>@i</td>
+                                <td>@ebulten.ebultenmail</td>
+                                <td>@ebulten.registertime.Value.ToString("dd.MM.yyyy")</td>
+                                <td>
+
+                                    <a href="@Url.Action("EbultenDelete", "Ebulten" , new { id = ebulten.id })" onclick="return confirm('@ebulten.ebultenmail Mail adresini Silmek İstediğinize Emin Misiniz?')"><i class="fas fa-trash"></i></a>
+                                </td>
+                            </tr>
+                            {
+                                i++;
+                            }
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+
+    <div class="col-lg-12 text-center">
+        @Html.PagedListPager((IPagedList)Model, page => Url.Action("Index", new { page }))
+    </div>
+</div>

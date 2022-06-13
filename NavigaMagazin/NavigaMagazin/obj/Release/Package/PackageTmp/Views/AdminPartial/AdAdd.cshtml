@@ -1,0 +1,97 @@
+﻿@model NavigaMagazin.Models.Entity.AdvertisingTable
+
+<form action="@Url.Action("AdAdd", "AdminPartial")" method="post" enctype="multipart/form-data" class="form-group">
+    <div class="modal-header">
+        <h5 class="modal-title text-center" id="exampleModalLabel">Yeni Reklam</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <input type="text" name="advertisingname" placeholder="Reklam Adı" required class="form-control" maxlength="65" /><br />
+        <input type="text" name="advertisinglink" placeholder="Reklam Linki" required class="form-control" maxlength="100" /><br />
+        <div class="row">
+            <div class="col-lg-4">
+                Reklam Fotoğrafı
+            </div>
+            <div class="col-lg-8">
+                <input type="file" name="advertisingphoto" required/>
+            </div>
+        </div>
+        <div class="row">
+            
+            <div class="col-lg-12">
+                
+               
+                <label for="cars">Reklam Formatı</label>
+
+                <select name="advertisingformat" class="form-control">
+                    <option value="260x230">260x230</option>
+                    <option value="320x270">320x270</option>
+                    <option value="320x540">320x540</option>
+                    <option value="728x90">728x90</option>
+                    <option value="728x90banner">728x90 Banner</option>
+                </select>
+
+                @*<input type="radio" name="advertisingformat" value="260x230">
+                <label for="advertising260x230" style="margin-right:10px;">260 x 230</label>
+                <input type="radio" name="advertisingformat" value="320x270">
+                <label for="advertising320x270" style="margin-right:10px;">320 x 270 </label>
+                <input type="radio" name="advertisingformat" value="320x540">
+                <label for="advertising320x540" style="margin-right:10px;">320 x 540</label>
+                <input type="radio" name="advertisingformat" value="728x90">
+                <label for="advertising728x90" style="margin-right:10px;"> 728 x 90</label>*@
+
+                <br />
+
+            </div>
+            <div class="row">
+                <div class="col-lg-6">
+                    Başlangıç Zamanı <br /><br />
+                    Bitiş Zamanı
+                </div>
+                <div class="col-lg-6">
+                    <input type="text" id="datepicker" name="advertisingstart" required="required" class="form-control">
+                    <input type="text" id="datepicker2" name="advertisingend" required="required" class="form-control"><br />
+                </div>
+            </div>
+
+            <div class="row">
+                
+                <div class="col-lg-12">
+                    <input type="checkbox" name="fixedad" value="true"> Sabit Reklam <br />
+                    <p><i>Sabit Reklam, herhangi bir reklam olmadığı zaman sürekli gösterilmesini istenilen reklamdır.</i></p>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Kapat</button>
+        <input type="submit" class="btn btn-primary" value="Ekle" />
+    </div>
+</form>
+
+
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.0/themes/base/jquery-ui.css">
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.0/jquery-ui.js"></script>
+<script>
+    $(function () {
+        var dateNow = new Date();
+
+        $("#datepicker").datepicker({
+            dateFormat: "yy-mm-dd",
+        }).datepicker('setDate', new Date());
+        ;
+    });
+
+    $(function () {
+        var dateNow = new Date();
+
+        $("#datepicker2").datepicker({
+            dateFormat: "yy-mm-dd",
+        }).datepicker('setDate', new Date());
+        ;
+    });
+</script>

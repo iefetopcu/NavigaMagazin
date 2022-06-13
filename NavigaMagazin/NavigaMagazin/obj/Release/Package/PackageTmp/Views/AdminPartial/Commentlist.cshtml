@@ -1,0 +1,23 @@
+﻿@using NavigaMagazin.Models.Entity
+
+@foreach (var commentlist in Model)
+{
+<li class="list-group-item d-flex px-3">
+    <a href="@Url.Action("Oku","Home", new { url = commentlist.ContentTable.url })"><span class="text-semibold text-fiord-blue">@commentlist.commenttitle</span></a>
+
+    <span class="ml-auto text-right text-semibold text-reagent-gray">
+        @if (commentlist.approved == "true")
+        {
+
+
+            <span style="color:#0c6f19">Onaylı Yorum</span>
+        }
+        else
+        {
+            <span style="color:#ff0000">Onaylanacak Yorum</span>
+        }
+
+    </span>
+</li>
+}
+

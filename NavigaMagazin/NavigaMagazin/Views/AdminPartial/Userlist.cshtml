@@ -1,0 +1,9 @@
+﻿@using NavigaMagazin.Models.Entity
+
+@foreach (var userlist in Model)
+{
+    <li class="list-group-item d-flex px-3">
+        <span class="text-semibold text-fiord-blue">@userlist.username @userlist.usersurname</span>
+        <span class="ml-auto text-right text-semibold text-reagent-gray">@userlist.creationtime.ToString("dd.MM.yyyy")</span>
+    </li>
+}

@@ -1,0 +1,32 @@
+﻿@using NavigaMagazin.Models.Entity
+<div class="team about-content">
+    <div class="container">
+
+        <div class="row">
+            @foreach (var teknik in Model)
+            {
+                <div class="col-md-3 col-sm-6 col-xs-12">
+                    <figure class="member">
+                        <img src="@teknik.userphoto" class="img-responsive" alt="Image" style="height:300px;">
+                        <figcaption>
+                            <h4>@teknik.username @teknik.usersurname</h4>
+                            <small>@teknik.UserRoleTable.rolename</small>
+                            <ul>
+                                <li><a href="@teknik.userfacebook" target="_blank"><i class="fab fa-facebook-f"></i></a></li>
+                                <li><a href="@teknik.usertwitter" target="_blank"><i class="fab fa-twitter"></i></a></li>
+                                <li><a href="@teknik.useryoutube" target="_blank"><i class="fab fa-youtube"></i></a></li>
+                                <li><a href="@teknik.userlinkedin" target="_blank"><i class="fab fa-linkedin-in"></i></a></li>
+                            </ul>
+                        </figcaption>
+                    </figure>
+                    <!-- end member -->
+                </div>
+            }
+            <!-- end col-12 -->
+            <!-- end col-3 -->
+
+        </div>
+        <!-- end row -->
+
+    </div>
+</div>

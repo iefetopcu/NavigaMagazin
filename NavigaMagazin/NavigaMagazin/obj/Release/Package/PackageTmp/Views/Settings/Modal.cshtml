@@ -1,0 +1,94 @@
+﻿@using NavigaMagazin.Models.Entity
+@{
+    ViewBag.Title = "Modal";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+<script>
+    $('#myModal').on('shown.bs.modal', function () {
+        $('#myInput').trigger('focus')
+    })
+    $('#myModal2').on('shown.bs.modal', function () {
+        $('#myInput2').trigger('focus')
+    })
+    $('#myModal3').on('shown.bs.modal', function () {
+        $('#myInput3').trigger('focus')
+    })
+    $('#myModal4').on('shown.bs.modal', function () {
+        $('#myInput4').trigger('focus')
+    })
+</script>
+<div class="page-header row no-gutters py-4">
+    <div class="col-6 col-sm-6 text-center text-sm-left mb-0">
+        <span class="text-uppercase page-subtitle">Modal Ayarları</span>
+    </div>
+    <div class="col-6 col-sm-6 text-center mb-0 ">
+        <button class="btn btn-primary pull-right" data-toggle="modal" data-target="#exampleModal">Modal Ekle</button>
+    </div>
+</div>
+@if (ViewBag.modal == "no")
+{
+    <div class="alert alert-danger text-center" role="alert">
+        <h4 class="alert-heading">Başarısız !</h4><br />
+        <p>Daha önce aktif bir pop-up kaydedilmiş, lütfen önce pop-up'ı siliniz ya da pasif olarak güncelleyiniz !</p>
+       
+    </div>
+}
+<div class="row">
+    @foreach (var item in Model)
+    {
+        <div class="col-lg-4">
+            <a href="@Url.Action("ModalUpdate", "Settings" , new { id = item.id })"><img src="@item.modalphoto" class="img-responsive" /></a>
+            <h4 class="text-center">@item.modallink</h4>
+            @if (item.modalactive == "true")
+            {
+                <h5 style="color:darkgreen" class="text-center">Atkif Modal</h5>
+            }
+            else
+            {
+            }
+            <a href="@Url.Action("ModalDelete", "Settings" , new { id = item.id })" class="text-center" onclick="return confirm('Bu Modali Silmek İstediğinize Emin Misiniz?')"><h6>Sil</h6></a>
+        </div>
+    }
+</div>
+@*İçerik Ara*@
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.0/themes/base/jquery-ui.css">
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.0/jquery-ui.js"></script>
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <form action="@Url.Action("ModalAdd", "Settings")" method="post" enctype="multipart/form-data" class="form-group">
+                <div class="modal-header">
+                    <h5 class="modal-title text-center" id="exampleModalLabel">Modal Ayarları</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <input type="text" name="modallink" placeholder="Modal Linki" required class="form-control" /><br />
+                    <label class="label">Modal Fotoğrafı</label>
+                    <input type="file" name="modalphoto" class="form-control" /><br />
+                    <input type="checkbox" name="modalactive" value="true" /> Aktif Modal
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Kapat</button>
+                    <input type="submit" class="btn btn-primary" value="Ekle" />
+                </div>
+            </form>
+
+        </div>
+    </div>
+</div>
+<script>
+
+    $(function () {
+        var dateNow = new Date();
+
+        $("#datepicker").datepicker({
+            dateFormat: "yy-mm-dd",
+        }).datepicker('setDate', new Date());
+        ;
+    });
+
+
+</script>

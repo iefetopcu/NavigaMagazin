@@ -1,0 +1,87 @@
+﻿@using NavigaMagazin.Models.Entity
+@{
+    ViewBag.Title = "Mesajlar";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+<div class="page-header row no-gutters py-4">
+    <div class="col-6 col-sm-6 text-center text-sm-left mb-0">
+        <span class="text-uppercase page-subtitle">Mesajlar</span>
+    </div>
+
+
+    <div class="col-6 col-sm-6 text-center mb-0 ">
+
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-lg-6">
+        <div class="col-12 col-sm-12 text-center text-sm-left mb-0">
+            <span class="text-uppercase page-subtitle" style="color:darkgreen">Okunmamış Mesajlar</span>
+        </div>
+        <hr />
+        @foreach (var message in Model)
+        {
+            if (message.messagestatu == 1)
+            {
+                <div class="card card-small card-post mb-4">
+                    <div class="card-body">
+                        <h5 class="card-title">@message.messagesubject</h5>
+                        <p class="card-text text-muted">@message.messagedescription</p>
+                    </div>
+                    <div class="card-footer border-top d-flex">
+                        <div class="card-post__author d-flex">
+
+                            <div class="d-flex flex-column justify-content-center ml-3">
+                                <span class="card-post__author-name">@message.messagefullname</span>
+                                <small class="text-muted"><a href="mailto:@message.messageemail">@message.messageemail</a> - @message.messagetime.ToString("dd.MM.yyyy")</small>
+                            </div>
+                        </div>
+                        <div class="my-auto ml-auto">
+                            <a class="btn btn-sm btn-white" href="@Url.Action("ReadMessage", "Messages" , new { id = message.id })">
+                                <i class="far fa-bookmark mr-1"></i> Okundu
+                            </a><a class="btn btn-sm btn-white" href="@Url.Action("DeleteMessage", "Messages" , new { id = message.id })" onclick="return confirm('Bu mesajı Silmek İstediğinize Emin Misiniz?')">
+                                <i class="far fa-bookmark mr-1"></i> Sil
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            }
+
+        }
+    </div>
+    <div class="col-lg-6">
+        <div class="col-12 col-sm-12 text-center text-sm-left mb-0">
+            <span class="text-uppercase page-subtitle" style="color:darkorange">Okunmuş Mesajlar</span>
+        </div>
+        <hr />
+        @foreach (var message in Model)
+        {
+            if (message.messagestatu == 2)
+            {
+            <div class="card card-small card-post mb-4">
+                <div class="card-body">
+                    <h5 class="card-title">@message.messagesubject</h5>
+                    <p class="card-text text-muted">@message.messagedescription</p>
+                </div>
+                <div class="card-footer border-top d-flex">
+                    <div class="card-post__author d-flex">
+                        <div class="d-flex flex-column justify-content-center ml-3">
+                            <span class="card-post__author-name">@message.messagefullname</span>
+                            <small class="text-muted"><a href="mailto:@message.messageemail">@message.messageemail</a> - @message.messagetime.ToString("dd.MM.yyyy")</small>
+                        </div>
+                    </div>
+                    <div class="my-auto ml-auto">
+                        <a class="btn btn-sm btn-white" href="@Url.Action("UnreadMessage", "Messages" , new { id = message.id })">
+                            <i class="far fa-bookmark mr-1"></i> Okunmadı
+                        </a><a class="btn btn-sm btn-white" href="@Url.Action("DeleteMessage", "Messages" , new { id = message.id })" onclick="return confirm('Bu mesajı Silmek İstediğinize Emin Misiniz?')">
+                            <i class="far fa-bookmark mr-1"></i> Sil
+                        </a>
+                    </div>
+                </div>
+            </div>
+            }
+        }
+    </div>
+</div>

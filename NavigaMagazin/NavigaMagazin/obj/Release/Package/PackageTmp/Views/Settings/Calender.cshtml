@@ -1,0 +1,97 @@
+﻿@using NavigaMagazin.Models.Entity
+@using PagedList
+@using PagedList.Mvc
+@model PagedList.IPagedList<calendarTable>
+@{
+    ViewBag.Title = "Calender";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+<script>
+    $('#myModal').on('shown.bs.modal', function () {
+        $('#myInput').trigger('focus')
+    })
+    $('#myModal2').on('shown.bs.modal', function () {
+        $('#myInput2').trigger('focus')
+    })
+    $('#myModal3').on('shown.bs.modal', function () {
+        $('#myInput3').trigger('focus')
+    })
+    $('#myModal4').on('shown.bs.modal', function () {
+        $('#myInput4').trigger('focus')
+    })
+</script>
+<style>
+    .modal-lg {
+        width: 100% !important;
+        max-width: 900px;
+    }
+</style>
+<div class="page-header row no-gutters py-4">
+    <div class="col-6 col-sm-6 text-center text-sm-left mb-0">
+        <span class="text-uppercase page-subtitle">Etkinlik Yönetimi</span>
+    </div>
+
+
+    <div class="col-6 col-sm-6 text-center mb-0 ">
+        <button class="btn btn-primary pull-right" data-toggle="modal" data-target="#exampleModal">Etkinlik Ara</button>       
+        <a href="@Url.Action("CalenderAdd","Settings")"><button class="btn btn-primary pull-right">Yeni Etkinlik</button></a>
+    </div>
+</div>
+<hr />
+<div class="row">
+
+    @foreach (var calender in Model)
+    {
+        <div class="col-lg-3 col-md-6 col-sm-12 mb-4">
+            <div class="card card-small card-post card-post--1">
+                
+                    <a href="@Url.Action("DeleteCalender", "Settings" , new { id = calender.id })" onclick="return confirm('Bu Etkinliği Silmek İstediğinize Emin Misiniz?')"><i class="material-icons badge badge-pill badge-secondary" style="color:white; padding:10px;">X</i></a>
+                    <p class="card-post__category badge badge-pill badge-dark"> </p>
+                    
+                
+                <div class="card-body">
+                    <h5 class="card-title">
+                        <a class="text-fiord-blue" href="@Url.Action("UpdateCalender", "Settings" , new { id = calender.id })">@calender.calendartitle</a>
+                    </h5>
+                    <span class="text-muted">@calender.calendestartrdate.Value.ToString("dd.MM.yyyy") - @calender.calenderenddate.Value.ToString("dd.MM.yyyy")</span>
+                </div>
+            </div>
+        </div>
+    }
+
+
+</div>
+@*İçerik Ara*@
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <form action="@Url.Action("SearchCalender", "Settings")" method="post" enctype="multipart/form-data" class="form-group">
+                <div class="modal-header">
+                    <h5 class="modal-title text-center" id="exampleModalLabel">Etkinlik Ara</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <input type="text" name="searchkey" placeholder="Takvim Ara" required class="form-control" /><br />
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Kapat</button>
+                    <input type="submit" class="btn btn-primary" value="Ara" />
+                </div>
+            </form>
+
+        </div>
+    </div>
+</div>
+<div class="row">
+
+    <div class="col-lg-12 text-center">
+        @Html.PagedListPager((IPagedList)Model, page => Url.Action("Index", new { page }))
+    </div>
+</div>
+
+
+

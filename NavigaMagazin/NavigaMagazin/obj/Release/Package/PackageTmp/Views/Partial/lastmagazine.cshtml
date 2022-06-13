@@ -1,0 +1,17 @@
+﻿@using NavigaMagazin.Models.Entity
+<a href="@Url.Action("Dergi","Home")">
+    <div class="post-head" style="background-color: #002D72;">
+        <h1 class="title" style="color:white;"><i class="fas fa-newspaper"></i> Bu ay dergide neler var? </h1>
+        <div class="filter-nav">
+
+        </div>
+    </div>
+</a>
+
+@foreach (var magazine in Model)
+{
+<a href="@Url.Action("AylikDergi","Home", new { url = magazine.url })">
+    <img src="@magazine.coverphoto" class="img-fluid" alt="@magazine.magazinetitle" style="width:100%!important;" />
+</a>
+    
+}

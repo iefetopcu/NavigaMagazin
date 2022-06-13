@@ -1,0 +1,86 @@
+﻿@using NavigaMagazin.Models.Entity
+@{
+    ViewBag.Title = "SearchVideo";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+<script>
+    $('#myModal').on('shown.bs.modal', function () {
+        $('#myInput').trigger('focus')
+    })
+    $('#myModal2').on('shown.bs.modal', function () {
+        $('#myInput2').trigger('focus')
+    })
+    $('#myModal3').on('shown.bs.modal', function () {
+        $('#myInput3').trigger('focus')
+    })
+    $('#myModal4').on('shown.bs.modal', function () {
+        $('#myInput4').trigger('focus')
+    })
+</script>
+<div class="page-header row no-gutters py-4">
+    <div class="col-6 col-sm-6 text-center text-sm-left mb-0">
+        <span class="text-uppercase page-subtitle">Aranan Video : @ViewBag.Words</span>
+    </div>
+
+
+    <div class="col-6 col-sm-6 text-center mb-0 ">
+        <button class="btn btn-primary pull-right" data-toggle="modal" data-target="#exampleModal">Video Ara</button>
+        
+
+    </div>
+</div>
+<hr />
+<div class="row">
+
+    @foreach (var videos in Model)
+    {
+        <div class="col-lg-4 border">
+            <iframe src="@videos.videolink" style="width:100%!important; height:auto;"></iframe>
+            <h5>@videos.videotitle </h5><br />
+            <div class="row">
+                <div class="col-lg-12 text-right">
+                    <a href="@Url.Action("VideoUpdate", "Video" , new { id = videos.id })"><i class="fas fa-pencil-alt"></i></a>
+                    <a href="@Url.Action("VideoDelete", "Video" , new { id = videos.id })" onclick="return confirm('@videos.videotitle adlı Silmek İstediğinize Emin Misiniz?')"><i class="fas fa-trash"></i></a>
+                </div>
+            </div>
+        </div>
+
+    }
+
+
+</div>
+@*İçerik Ara*@
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <form action="@Url.Action("SearchVideo", "Video")" method="post" enctype="multipart/form-data" class="form-group">
+                <div class="modal-header">
+                    <h5 class="modal-title text-center" id="exampleModalLabel">Video Ara</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <input type="text" name="searchkey" placeholder="Video Ara" required class="form-control" /><br />
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Kapat</button>
+                    <input type="submit" class="btn btn-primary" value="Ara" />
+                </div>
+            </form>
+
+        </div>
+    </div>
+</div>
+@*Yeni Kategori*@
+@*<div class="modal fade" id="exampleModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+
+            @{Html.RenderAction("VideoAdd", "AdminPartial");}
+        </div>
+    </div>
+</div>*@
+
+

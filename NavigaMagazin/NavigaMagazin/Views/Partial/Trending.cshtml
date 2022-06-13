@@ -1,0 +1,11 @@
+﻿@using NavigaMagazin.Models.Entity
+
+<div class="news-ticker owl-carousel owl-theme">
+    @foreach (var trend in Model)
+    {
+        <div class="item">
+            <a href="@Url.Action("Oku","Home", new { url = trend.url })">@trend.posttitle</a>
+        </div>
+    }
+
+</div>

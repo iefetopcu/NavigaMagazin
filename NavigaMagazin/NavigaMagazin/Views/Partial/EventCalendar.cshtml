@@ -1,0 +1,77 @@
+﻿@using NavigaMagazin.Models.Entity
+<div class="post-head" style="        background-color: #002D72;">
+    <h1 class="title" style="color:white;"><i class="fas fa-calendar"></i> <strong>Etkinlik </strong>Takvimi </h1>
+    <div class="filter-nav">
+
+    </div>
+</div>
+
+@foreach (var calender in Model)
+{
+<div class="row" style="margin:0!important; padding:5px!important;" >
+
+    <div class="col-lg-3" style="        border-radius: 10px;
+        border: 1px solid #002D72;
+        background: #DE3163;">
+        <h3 class="text-center" style="color:white!important;">
+            @calender.calendestartrdate.ToString("dd")
+            @if (calender.calendestartrdate.ToString("MM") == "01")
+            {
+                <span>Ocak</span>
+            }
+            @if (calender.calendestartrdate.ToString("MM") == "02")
+            {
+                <span>Şubat</span>
+            }
+            @if (calender.calendestartrdate.ToString("MM") == "03")
+            {
+                <span>Mart</span>
+            }
+            @if (calender.calendestartrdate.ToString("MM") == "04")
+            {
+                <span>Nisan</span>
+            }
+            @if (calender.calendestartrdate.ToString("MM") == "05")
+            {
+                <span>Mayıs</span>
+            }
+            @if (calender.calendestartrdate.ToString("MM") == "06")
+            {
+                <span>Haziran</span>
+            }
+            @if (calender.calendestartrdate.ToString("MM") == "07")
+            {
+                <span>Temmuz</span>
+            }
+            @if (calender.calendestartrdate.ToString("MM") == "08")
+            {
+                <span>Ağustos</span>
+            }
+            @if (calender.calendestartrdate.ToString("MM") == "09")
+            {
+                <span>Eylül</span>
+            }
+            @if (calender.calendestartrdate.ToString("MM") == "10")
+            {
+                <span>Ekim</span>
+            }
+            @if (calender.calendestartrdate.ToString("MM") == "11")
+            {
+                <span>Kasım</span>
+            }
+            @if (calender.calendestartrdate.ToString("MM") == "12")
+            {
+                <span>Aralık</span>
+            }
+        </h3>
+    </div>
+    <div class="col-lg-9" style="padding:10px;">
+        <a href="@Url.Action("Etkinlik","Home", new { url = calender.url })"><h5>@calender.calendartitle</h5></a>
+
+    </div>
+
+</div>
+
+
+
+}

@@ -1,0 +1,39 @@
+﻿@model NavigaMagazin.Models.Entity.videoTable
+
+<form action="@Url.Action("VideoAdd", "AdminPartial")" method="post" enctype="multipart/form-data" class="form-group">
+    <div class="modal-header">
+        <h5 class="modal-title text-center" id="exampleModalLabel">Yeni Video</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+
+        <input type="text" name="videotitle" placeholder="Vide Başlığı" required class="form-control" maxlength="65" /><br />
+        <i><p style="padding-bottom:0; margin-bottom:0; color:#ff0000; ">Video Embed Linki Koyulmalıdır.</p></i>
+        <input type="text" name="videolink" placeholder="Video Linki" required class="form-control" /><br />
+        <textarea name="videodescription" required class="form-control"></textarea>
+        <label>Yayınlanma Zamanı</label><br />
+        <input type="text" id="datepicker" name="releasetime" required="required" class="form-control"><br />
+        <input type="checkbox" name="showroom" value="true" /> Vitrinde Göster
+
+
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Kapat</button>
+        <input type="submit" class="btn btn-primary" value="Ekle" />
+    </div>
+</form>
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.0/themes/base/jquery-ui.css">
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.0/jquery-ui.js"></script>
+<script>
+    $(function () {
+        var dateNow = new Date();
+
+        $("#datepicker").datepicker({
+            dateFormat: "yy-mm-dd",
+        }).datepicker('setDate', new Date());
+        ;
+    });
+</script>

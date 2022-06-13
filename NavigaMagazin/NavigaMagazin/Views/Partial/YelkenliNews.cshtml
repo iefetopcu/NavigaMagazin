@@ -1,0 +1,22 @@
+﻿@using NavigaMagazin.Models.Entity
+@foreach (var yelkenli in Model)
+{
+
+    <div class="col-xs-6 col-sm-6 col-md-6 col-padding">
+        <div class="grid-item">
+            <div class="grid-item-img">
+                <a href="@Url.Action("Oku","Home", new { url = yelkenli.url })">
+                    <img src="@yelkenli.postphoto" class="img-responsive" alt="@yelkenli.posttitle">
+                    @*<div class="link-icon"><i class="fa fa-camera"></i></div>*@
+                </a>
+            </div>
+            <h5><a href="@Url.Action("Oku","Home", new { url = yelkenli.url })" class="title">@yelkenli.posttitle</a></h5>
+            <ul class="authar-info">
+                <li>@yelkenli.releasetime.ToString("dd.MM.yyyy")</li>
+                <li class="like hidden-sm">@yelkenli.postlike</li>
+            </ul>
+            <p>@yelkenli.postspottext</p>
+        </div>
+    </div>
+
+}

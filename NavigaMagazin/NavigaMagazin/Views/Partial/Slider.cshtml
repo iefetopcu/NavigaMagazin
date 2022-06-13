@@ -1,0 +1,19 @@
+﻿@using NavigaMagazin.Models.Entity
+
+@foreach (var slider in Model)
+{
+    <div class="item">
+        <div class="slider-post post-height-1">
+            <a href="@Url.Action("Oku","Home", new { url = slider.url })" class="news-image"><img src="@slider.postphoto" alt="@slider.posttitle" class="img-responsive"></a>
+            <div class="post-text">
+                <span class="post-category">@slider.CategoryTable.categoryname</span>
+                <h2><a href="@Url.Action("Oku","Home", new { url = slider.url })">@slider.posttitle </a></h2>
+                <ul class="authar-info">
+                    <li class="authar"><a href="#">@slider.UserTable.username @slider.UserTable.usersurname</a></li>
+                    <li class="date">@slider.releasetime.ToString("dd.MM.yyyy")</li>
+                    <li class="view"><a href="#">@slider.postview Görüntüleme</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+}

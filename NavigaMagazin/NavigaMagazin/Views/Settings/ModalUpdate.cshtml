@@ -1,0 +1,81 @@
+﻿@model NavigaMagazin.Models.Entity.modalTable
+@{
+    ViewBag.Title = "Modal Güncelle";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+<div class="main-content-container container-fluid px-4">
+
+    <div class="page-header row no-gutters py-4">
+        <div class="col-12 col-sm-4 text-center text-sm-left mb-0">
+            <span class="text-uppercase page-subtitle"></span>
+            <h3 class="page-title">Etkinlik Güncelle</h3>
+        </div>
+    </div>
+
+    @using (Html.BeginForm("ModalUpdate", "Settings", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        <div class="row">
+            <div class="col-lg-9 col-md-12">
+                <div class="card card-small mb-3">
+                    <div class="card-body">
+
+                        @Html.TextBoxFor(m => m.modallink, new { @class = "form-control form-control-lg mb-3"})
+
+                        <div class="add-new-post__editor mb-1">
+
+                            <img src="@Model.modalphoto" style="width:300px;" /><br />
+                            <label class="col-form-label">Modal Fotoğrafı Güncelle</label> <br />
+
+                            <input type="file" name="modalphoto" />
+
+                           
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-12">
+
+
+                <div class='card card-small mb-3'>
+                    
+                    <div class='card-body p-0'>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item p-3">
+
+
+                                <span class="d-flex mb-2">
+
+                                    @if (Model.modalactive == "true")
+                                    {
+                                        <input type="checkbox" name="modalactive" value="true" checked />
+                                    }
+                                    else
+                                    {
+                                        <input type="checkbox" name="modalactive" value="true" />
+                                    }
+                                    
+                                    <strong class="mr-1"> Aktif Modal </strong>
+                                </span>
+
+                            </li>
+                           
+                            <li class="list-group-item d-flex px-3">
+
+                                <button class="btn btn-sm btn-accent ml-auto">
+                                    <i class="material-icons">file_copy</i> Yayınla
+                                </button>
+                            </li>
+                        </ul>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    }
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.0/themes/base/jquery-ui.css">
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.js"></script>
+
+</div>

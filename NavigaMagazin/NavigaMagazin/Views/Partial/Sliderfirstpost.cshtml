@@ -1,0 +1,15 @@
+﻿@using NavigaMagazin.Models.Entity
+@foreach (var vitrin1 in Model)
+{
+    <div class="slider-post post-height-4">
+        <a href="@Url.Action("Oku","Home", new { url = vitrin1.url })" class="news-image"><img src="@vitrin1.postphoto" alt="@vitrin1.posttitle" class="img-responsive"></a>
+        <div class="post-text">
+            <span class="post-category">@vitrin1.CategoryTable.categoryname</span>
+            <h4><a href="@Url.Action("Oku","Home", new { url = vitrin1.url })">@vitrin1.posttitle</a></h4>
+            <ul class="authar-info">
+                <li class="authar hidden-xs hidden-sm"><a href="#">@vitrin1.UserTable.username @vitrin1.UserTable.usersurname</a></li>
+                <li class="hidden-xs">@vitrin1.releasetime.ToString("dd.MM.yyyy")</li>
+            </ul>
+        </div>
+    </div>
+}

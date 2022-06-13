@@ -1,0 +1,67 @@
+﻿
+@{
+    ViewBag.Title = "Soru Sor";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="page-title">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12">
+                <h1><strong>Soru Sor</strong></h1>
+                <h5>Aşağıdaki formu doldurarak teknik kurulumuza soru sorabilirsiniz.</h5>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="main-content-container container-fluid px-4">
+
+    <div class="container">
+        <div class="row">     
+            
+            
+                <div class="col-lg-8 col-md-12">
+                    <div class="card card-small mb-3">
+                        @if (Session["MySessionUser"] == null)
+                        {
+                            <h3>Teknik kurulumuza soru sormak için giriş yapınız...</h3>
+                            <h5><a href="#" data-toggle="modal" data-target="#GirisYap" class="text-center">Giriş Yap</a></h5>
+
+
+                        }
+
+                        @if (ViewBag.question != null)
+                        {
+                            <div class="alert alert-success text-center" role="alert">
+                                <h4 class="alert-heading">Başarılı !</h4><br />
+                                <p>Göndermiş olduğunuz soru bize ulaştı </p>
+                                <p class="mb-0">Sorunuza en kısa sürede uzmanlarımız tarafından cevap verilecektir.</p>
+                            </div>
+                        }
+                        @if (Session["MySessionUser"] != null)
+                        {
+
+
+                            <div class="card-body">
+                                <form class="comment-form" method="post" enctype="multipart/form-data">
+                                    <input class="form-control" type="text" placeholder="Soru Başlığı - Maximum 65 Karakter" name="questiontitle" required maxlength="65">
+
+                                    <div class="add-new-post__editor mb-1">
+                                        <h4>İçerik</h4>
+                                        <textarea name="questioncontent" class="form-control" required></textarea><br /><br />
+                                        <button class="btn btn-news">
+                                            Soru Sor
+                                        </button>
+                                    </div>
+                                </form>
+                            </div>
+                        }
+                    </div>
+                </div>
+                @{Html.RenderAction("Sidecontent", "Partial");}
+            </div>
+    </div>
+
+
+</div>
+

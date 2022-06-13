@@ -1,0 +1,110 @@
+﻿@using NavigaMagazin.Models.Entity
+@{
+    ViewBag.Title = "StormCalender";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+<script>
+    $('#myModal').on('shown.bs.modal', function () {
+        $('#myInput').trigger('focus')
+    })
+    $('#myModal2').on('shown.bs.modal', function () {
+        $('#myInput2').trigger('focus')
+    })
+    $('#myModal3').on('shown.bs.modal', function () {
+        $('#myInput3').trigger('focus')
+    })
+    $('#myModal4').on('shown.bs.modal', function () {
+        $('#myInput4').trigger('focus')
+    })
+</script>
+<div class="page-header row no-gutters py-4">
+    <div class="col-6 col-sm-6 text-center text-sm-left mb-0">
+        <span class="text-uppercase page-subtitle">Fırtına Takvimi</span>
+    </div>
+
+
+    <div class="col-6 col-sm-6 text-center mb-0 ">
+        <button class="btn btn-primary pull-right" data-toggle="modal" data-target="#exampleModal">Yeni Fırtına Takvimi Gir</button>
+    </div>
+</div>
+<div class="row">
+    <div class="col">
+        <div class="card card-small mb-4">
+            <div class="card-header border-bottom">
+                <h6 class="m-0">Fırtına Takvimi Listesi</h6>
+            </div>
+            <div class="card-body p-0 pb-3 text-center">
+                <table class="table mb-0">
+                    <thead class="bg-light">
+                        <tr>
+                            <th scope="col" class="border-0">#</th>
+                            <th scope="col" class="border-0">Fırtına Takvim Adı</th>
+                            <th scope="col" class="border-0">Yayınlanma Tarihi</th>
+                            <th scope="col" class="border-0">İşlem</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @{int i = 1;}
+                        @foreach (var takvim in Model)
+                        {
+                            <tr>
+                                <td>@i</td>
+                                <td>@takvim.stormname</td>
+                                <td>@takvim.releasetime.ToString("dd.MM.yyyy")</td>
+                                <td>
+                                    <a href="@Url.Action("DeleteStorm", "Settings" , new { id = takvim.id })" onclick="return confirm('@takvim.stormname Bu Takvimi Silmek İstediğinize Emin Misiniz?')"><i class="fas fa-trash"></i></a>
+                                </td>
+                            </tr>
+                            {
+                                i++;
+                            }
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+@*İçerik Ara*@
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.0/themes/base/jquery-ui.css">
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.0/jquery-ui.js"></script>
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <form action="@Url.Action("StormCalenderAdd", "Settings")" method="post" enctype="multipart/form-data" class="form-group">
+                <div class="modal-header">
+                    <h5 class="modal-title text-center" id="exampleModalLabel">Fırtına Takvimi Ekle</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <input type="text" name="stormname" placeholder="Fırtına Takvimi Gir" required class="form-control" /><br />
+                    <label class="label">Tarih</label>
+                    <input type="text" id="datepicker" name="releasetime" required="required" class="form-control"><br />
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Kapat</button>
+                    <input type="submit" class="btn btn-primary" value="Ekle" />
+                </div>
+            </form>
+
+        </div>
+    </div>
+</div>
+
+<script>
+
+    $(function () {
+        var dateNow = new Date();
+
+        $("#datepicker").datepicker({
+            dateFormat: "yy-mm-dd",
+        }).datepicker('setDate', new Date());
+        ;
+    });
+
+
+</script>
+

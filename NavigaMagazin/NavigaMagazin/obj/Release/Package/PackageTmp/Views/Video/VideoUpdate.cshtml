@@ -1,0 +1,65 @@
+﻿@model NavigaMagazin.Models.Entity.videoTable
+@{
+    ViewBag.Title = "VideoUpdate";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+<div class="page-header row no-gutters py-4">
+    <div class="col-12 col-sm-12 text-center text-sm-left mb-0">
+        <span class="text-uppercase page-subtitle">Video Güncelleme</span>
+    </div>
+</div>
+<hr />
+@using (Html.BeginForm("VideoUpdate", "Video", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <div class="main-content-container container-fluid px-12">
+        <div class="row">
+            <div class="col-lg-12 col-md-12">
+                <div class="card card-small mb-9">
+                    <div class="card-body">
+                        <label>Video</label>
+                        <iframe src="@Model.videolink" style="width:100%!important; height:auto;"></iframe>
+                        <label>Video Adı</label>
+                        @Html.TextBoxFor(m => m.videotitle, new { @class = "form-control form-control-lg mb-3" })
+                        <label>video Açıklaması</label>
+                        @Html.TextAreaFor(m => m.videodescription, new { @class = "form-control form-control-lg mb-3" })
+                        <label>Video Linki</label>
+                        @Html.TextBoxFor(m => m.videolink, new { @class = "form-control form-control-lg mb-3" })
+                        <label>Yayınlanma Zamanı</label>
+                        <input type="text" id="datepicker" name="releasetime" required="required" class="ml-auto" value="@Model.releasetime"><br />
+                        
+                        <label>Vitrin</label>
+                        @if (Model.showroom == "true")
+                        {
+                            <input type="checkbox" name="showroom" value="true" checked />
+                        }
+                        else
+                        {
+                            <input type="checkbox" name="showroom" value="true" />
+                        }
+                        <br /><br />
+                        <button class="btn btn-sm btn-accent ml-auto">
+                            <i class="material-icons">file_copy</i> Kaydet
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+}
+
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.0/themes/base/jquery-ui.css">
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.0/jquery-ui.js"></script>
+<script>
+    $(function () {
+
+
+        $("#datepicker").datepicker({
+            dateFormat: 'yy-mm-dd'
+        }).datepicker();
+        ;
+    });
+</script>

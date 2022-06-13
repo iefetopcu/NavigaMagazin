@@ -1,0 +1,49 @@
+﻿@using NavigaMagazin.Models.Entity
+@if (Model.Count == 0)
+{
+
+    <div class="alert alert-danger text-center" role="alert">
+        <h4 class="alert-heading">Yayına Girecek Reklam Yok !</h4><br />
+
+
+    </div>
+}
+<div class="row">
+
+    @foreach (var ads in Model)
+    {
+        <div class="col-lg-3 col-md-6 col-sm-12 mb-4">
+            <div class="card card-small card-post card-post--1" style="border:#ffd800 solid 1px;">
+                <div class="card-post__image" style="background-image: url('@ads.advertisingphoto');">
+                    <a href="@Url.Action("DeleteAd", "Advertisement" , new { id = ads.id })" onclick="return confirm('Bu Reklamı Silmek İstediğinize Emin Misiniz?')">
+                        <i class="material-icons badge badge-pill badge-secondary" style="color:white; padding:10px;">
+                            <i class="fa fa-trash" aria-hidden="true"></i>
+                        </i>
+                    </a>
+                    <p class="card-post__category badge badge-pill badge-dark">
+                        <i class="fa fa-hand-pointer" aria-hidden="true"></i>
+                        @ads.numberofclicks | <i class="fa fa-eye" aria-hidden="true"></i> @ads.numberofview
+                    </p>
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title">
+                        <a class="text-fiord-blue" href="@Url.Action("UpdateAd", "Advertisement" , new { id = ads.id })">@ads.advertisingname</a>
+                    </h5>
+                    <span class="text-muted">@ads.advertisingstart.ToString("dd.MM.yyyy") - @ads.advertisingend.ToString("dd.MM.yyyy") </span>
+                    <br />
+                    @if (ads.advertising260x230 == "true")
+                    {<span class="text-muted"><b style="color:#ae3b3b">260x230</b></span>}
+                    @if (ads.advertising320x270 == "true")
+                    {<span class="text-muted"><b style="color:#ae3b3b">320x270</b></span>}
+                    @if (ads.advertising320x540 == "true")
+                    {<span class="text-muted"><b style="color:#ae3b3b">320x540</b></span>}
+
+                    @if (ads.advertising728x90 == "true")
+                    {<span class="text-muted"><b style="color:#ae3b3b">728x90</b></span>}
+                    @if (ads.advertising728x90banner == "true")
+                    {<span class="text-muted"><b style="color:#ae3b3b">728x90 Banner</b></span>}
+                </div>
+            </div>
+        </div>
+    }
+</div>

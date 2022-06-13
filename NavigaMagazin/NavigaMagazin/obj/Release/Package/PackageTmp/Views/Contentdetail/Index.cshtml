@@ -1,0 +1,144 @@
+﻿@using NavigaMagazin.Models.Entity
+@using PagedList
+@using PagedList.Mvc
+@model PagedList.IPagedList<ContentTable>
+@{
+    ViewBag.Title = "İçerik";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+<script>
+    $('#myModal').on('shown.bs.modal', function () {
+        $('#myInput').trigger('focus')
+    })
+    $('#myModal2').on('shown.bs.modal', function () {
+        $('#myInput2').trigger('focus')
+    })
+    $('#myModal3').on('shown.bs.modal', function () {
+        $('#myInput3').trigger('focus')
+    })
+    $('#myModal4').on('shown.bs.modal', function () {
+        $('#myInput4').trigger('focus')
+    })
+</script>
+<style>
+    .modal-lg {
+        width: 100% !important;
+        max-width: 900px;
+    }
+
+
+</style>
+<div class="page-header row no-gutters py-4">
+    <div class="col-6 col-sm-6 text-center text-sm-left mb-0">
+        <span class="text-uppercase page-subtitle">İçerik Yönetimi</span>
+    </div>
+
+
+    <div class="col-6 col-sm-6 text-center mb-0 ">
+        <button class="btn btn-primary pull-right" data-toggle="modal" data-target="#exampleModal">İçerik Ara</button>
+        <button class="btn btn-primary pull-right" data-toggle="modal" data-target="#exampleModal2">Yeni Kategori</button>
+        <button class="btn btn-primary pull-right" data-toggle="modal" data-target="#exampleModal4">Kategoriler</button>
+        <a href="@Url.Action("ContentAdd","Contentdetail")"><button class="btn btn-primary pull-right">Yeni İçerik</button></a>
+    </div>
+</div>
+<hr />
+<div class="row">
+    @{int i = 1;}
+    @foreach (var posts in Model)
+    {
+        <div class="col-lg-3 col-md-6 col-sm-12 mb-4">
+            <div class="card card-small card-post card-post--1">
+                <div class="card-post__image" style="background-image: url('@posts.postphoto');">
+                    <a href="@Url.Action("DeleteContent", "Contentdetail" , new { id = posts.id })" onclick="return confirm('Bu İçeriği Silmek İstediğinize Emin Misiniz?')"><i class="material-icons badge badge-pill badge-secondary" style="color:white; padding:10px;">X</i></a>
+                    <p class="card-post__category badge badge-pill badge-dark">@posts.CategoryTable.categoryname </p>
+                    <div class="card-post__author d-flex">
+                        <a href="#" class="card-post__author-avatar card-post__author-avatar--small" style="background-image: url('@posts.UserTable.userphoto')"></a>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title">
+                        <a class="text-fiord-blue" href="@Url.Action("UpdateContent", "Contentdetail" , new { id = posts.id })">@posts.posttitle</a>
+                    </h5>
+                    <span class="text-muted">@posts.releasetime.Value.ToString("dd.MM.yyyy")</span>
+                </div>
+            </div>
+        </div>
+    }
+
+
+</div>
+@*İçerik Ara*@
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <form action="@Url.Action("SearchContent", "Contentdetail")" method="post" enctype="multipart/form-data" class="form-group">
+                <div class="modal-header">
+                    <h5 class="modal-title text-center" id="exampleModalLabel">Yeni Kategori</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <input type="text" name="searchkey" placeholder="İçerik Ara" required class="form-control" /><br />
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Kapat</button>
+                    <input type="submit" class="btn btn-primary" value="Ara" />
+                </div>
+            </form>
+
+        </div>
+    </div>
+</div>
+@*Yeni Kategori*@
+<div class="modal fade" id="exampleModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+
+            @{Html.RenderAction("CategoryAdd", "AdminPartial");}
+        </div>
+    </div>
+</div>
+@*Yeni İçerik*@
+@*<div class="modal fade" id="exampleModal3" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-xl">
+            >
+            <div class="modal-content">
+
+                @{Html.RenderAction("ContentAdd", "AdminPartial");}
+            </div>
+        </div>
+    </div>*@
+
+@*Kategoriler*@
+<div class="modal fade" id="exampleModal4" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title text-center" id="exampleModalLabel">Kategoriler</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+
+                @{Html.RenderAction("Categories", "AdminPartial");}
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Kapat</button>
+
+            </div>
+
+
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    
+    <div class="col-lg-12 text-center">
+        
+    </div>
+</div>
+

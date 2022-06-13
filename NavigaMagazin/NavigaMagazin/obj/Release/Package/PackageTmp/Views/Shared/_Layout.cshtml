@@ -1,0 +1,570 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+
+    <title>@ViewBag.Title - Naviga Magazin</title>
+    <meta name="description" content="@ViewBag.Description">
+
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <!-- Favicon and touch icons -->
+
+    <link rel="shortcut icon" type="image/png" href="~/Photos/navigaico.ico" />
+    <!--Google fonts-->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700;1,900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
+    <!-- jquery ui css -->
+    <link href="~/assets/plugins/jqueryui/jquery-ui.min.css" rel="stylesheet">
+    <!-- Bootstrap -->
+    <link href="~/assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <!--Animate css-->
+    <link href="~/assets/plugins/animate.css/animate.min.css" rel="stylesheet">
+    <!-- Navigation css-->
+    <link href="~/assets/plugins/bootsnav/css/bootsnav.min.css" rel="stylesheet">
+    <!-- youtube css -->
+    <link href="~/assets/css/RYPP.css" rel="stylesheet">
+    <!-- font awesome -->
+    <link href="~/assets/plugins/fontawesome/css/all.min.css" rel="stylesheet">
+    <!-- themify-icons -->
+    <link href="~/assets/plugins/themify-icons/themify-icons.css" rel="stylesheet">
+    <!-- weather-icons -->
+    <link href="~/assets/plugins/weather-icons/css/weather-icons.min.css" rel="stylesheet">
+    <!-- Important Owl stylesheet -->
+    <link href="~/assets/plugins/OwlCarousel2/css/owl.carousel.min.css" rel="stylesheet">
+    <!-- Default Theme -->
+    <link href="~/assets/plugins/OwlCarousel2/css/owl.theme.default.min.css" rel="stylesheet">
+    <!-- owl transitions -->
+    <!-- style css -->
+    <link href="~/assets/css/style.css" rel="stylesheet">
+
+</head>
+
+<body>
+    <!-- PAGE LOADER -->
+    <div class="se-pre-con"></div>
+    <!-- *** START PAGE HEADER SECTION *** -->
+    <header>
+        <!-- START HEADER TOP SECTION -->
+        <div class="header-top">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-12 col-md-6 col-sm-6 col-lg-6">
+                        <!-- Start header social -->
+                        <div class="hidden-xs header-social">
+                            <ul>
+                                <li><a href="https://www.facebook.com/NavigaMagazin?fref=ts"><i class="fab fa-facebook-f"></i></a></li>
+                                <li><a href="https://twitter.com/NavigaMagazin"><i class="fab fa-twitter"></i></a></li>
+                                <li><a href="https://tr.linkedin.com/company/naviga-magazin"><i class="fab fa-linkedin"></i></a></li>
+                                <li><a href="https://www.instagram.com/navigamagazin/"><i class="fab fa-instagram"></i></a></li>
+                                <li class="hidden-xs"><a href="https://www.youtube.com/channel/UC5d0tuuHPACSCl_KDzupPDg"><i class="fab fa-youtube"></i></a></li>
+
+                            </ul>
+                        </div>
+                        <!-- End of /. header social -->
+                        <!-- Start top left menu -->
+                        <div class="hidden-xs top-left-menu">
+                            <ul>
+                                <li><a href="@Url.Action("Iletisim", "Home")">İletişim</a></li>
+                                @*<li><a href="@Url.Action("Bagis", "Home")">Bağış</a></li>*@
+                            </ul>
+                        </div>
+                        <!-- End of /. top left menu -->
+                    </div>
+                    <!-- Start header top right menu -->
+                    <div class="col-md-6 col-sm-6 col-lg-6">
+                        <div class="header-right-menu">
+                            <ul>
+                                @if (Session["MySessionUser"] != null)
+                                {
+                                    <li>
+                                        <a href="@Url.Action("Kullanici", "Home")">@(Session["MySessionUser"] != null ? ((NavigaMagazin.Models.Entity.UserTable)Session["MySessionUser"]).username : "") @(Session["MySessionUser"] != null ? ((NavigaMagazin.Models.Entity.UserTable)Session["MySessionUser"]).usersurname : "")</a>
+                                    </li>
+
+                                    <li><a href="@Url.Action("Logout", "Home")"><i class="fa fa-sign-out-alt" style="margin-left:20px;"></i> Çıkış Yap</a></li>
+
+                                    if (((NavigaMagazin.Models.Entity.UserTable)Session["MySessionUser"]).UserRoleTable.rolename == "Admin" || ((NavigaMagazin.Models.Entity.UserTable)Session["MySessionUser"]).UserRoleTable.rolename == "Editor")
+                                    {
+                                        <li>
+                                            <a href="@Url.Action("Index", "Admin")">
+                                                <i class="fa fa-users-cog" style="margin-left:20px;"></i>
+                                                Admin
+                                            </a>
+                                        </li>
+                                    }
+                                }
+                                else
+                                {
+                                    <li> <a href="#" data-toggle="modal" data-target="#UyeOl"><i class="fa fa-lock"></i> Üye Ol </a>ya da<a href="#" data-toggle="modal" data-target="#GirisYap"> Giriş Yap</a></li>
+                                }
+
+                            </ul>
+                        </div>
+                    </div> <!-- end of /. header top right menu -->
+                </div> <!-- end of /. row -->
+            </div> <!-- end of /. container -->
+        </div>
+        <!-- END OF /. HEADER TOP SECTION -->
+        <!-- START MIDDLE SECTION -->
+        <div class="header-mid hidden-xs">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-4">
+
+                        <a href="@Url.Action("Index", "Home")"><img src="~/Photos/navigalogo18.png" class="img-responsive" alt="Naviga Magazin" style="max-height:100px;"></a>
+
+                    </div>
+                    <div class="col-sm-8">
+                        @{Html.RenderAction("ad728x90banner", "Partial");}
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- END OF /. MIDDLE SECTION -->
+        <!-- START NAVIGATION -->
+        @{Html.RenderAction("menu", "Partial");}
+        <!-- END OF/. NAVIGATION -->
+    </header>
+    <!-- *** END OF /. PAGE HEADER SECTION *** -->
+    <!-- *** START PAGE MAIN CONTENT *** -->
+    <main class="page_main_wrapper">
+        <!-- START NEWSTRICKER -->
+        <div class="container">
+            <div class="newstricker_inner">
+                <div class="trending"><strong>Haberler</strong> </div>
+                @{Html.RenderAction("Trending", "Partial");}
+            </div>
+        </div>
+        @RenderBody()
+    </main>
+    <!-- *** END OF /. PAGE MAIN CONTENT *** -->
+    <!-- START FOOTER -->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <!-- START FOOTER BOX (About) -->
+                <div class="col-sm-4 footer-box">
+                    <div class="about-inner">
+
+
+                        <ul>
+                            <li><i class="ti-location-arrow"></i>Kalamış Fener Cad. İskele Sok. (Gamze Sok.) No: 2 Kalamış 34025 Kadıköy-İstanbul</li>
+                            <li><i class="ti-mobile"></i>0 (216) 418 51 91</li>
+                            <li><i class="ti-email"></i>okuyucu@navigamagazin.com</li>
+                        </ul>
+                    </div>
+                </div>
+                <!--  END OF /. FOOTER BOX (About) -->
+                <!-- START FOOTER BOX (Twitter feeds) -->
+                <!-- END OF /. FOOTER BOX (Twitter feeds) -->
+                <!-- START FOOTER BOX (Category) -->
+                <div class="col-sm-4 footer-box">
+                    <div class="row">
+                        <ul class="menu-services">
+                            <div class="col-lg-6">
+                                <li><a href="@Url.Action("Yelkenli", "Home")">Yelkenli</a></li>
+                                <li><a href="@Url.Action("Motoryat", "Home")">Motoryat</a></li>
+                                <li><a href="@Url.Action("Rib", "Home")">RİB</a></li>
+                                <li><a href="@Url.Action("Teknik", "Home")">Teknik</a></li>
+                                <li><a href="@Url.Action("Urunler", "Home")">Ürünler</a></li>
+
+                            </div>
+                            <div class="col-lg-6">
+
+
+                                <li><a href="@Url.Action("Haberler", "Home")">Haberler</a></li>
+                                <li><a href="@Url.Action("Rota", "Home")">Rota</a></li>
+                                <li><a href="@Url.Action("Kuzine", "Home")">Kuzine</a></li>
+                                <li><a href="@Url.Action("Yazarlar", "Home")">Yazarlar</a></li>
+                                <li><a href="@Url.Action("Arsiv", "Home")">Arşiv</a></li>
+                            </div>
+                        </ul>
+                    </div>
+                </div>
+                <!-- END OF /. FOOTER BOX (Category) -->
+                <!-- START FOOTER BOX (Recent Post) -->
+                <div class="col-sm-4 footer-box">
+                    <h3 class="wiget-title">Naviga E-Bülten</h3>
+                    <br /><br />
+                    <h5 style="color:white!important;">Bizden haberdar olmak için e-bültene abone olunuz.</h5>
+                    <div class="footer-news-grid">
+                        <form method="post" action="@Url.Action("Ebulten", "Home")">
+                            <div class="row">
+                                <div class="col-lg-9">
+                                    <input type="email" name="ebultenmail" class="form-control" placeholder="E-Mail Adresiniz" style="width:100%!important;" />
+                                </div>
+                                <div class="col-lg-3">
+                                    <input type="submit" value="Abole Ol" class="btn btn-danger block" />
+                                </div>
+                            </div>
+
+
+                        </form>
+
+                    </div>
+                </div>
+                <!-- END OF /. FOOTER BOX (Recent Post) -->
+
+
+
+            </div>
+
+
+        </div>
+    </footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3">
+                <img src="~/Photos/tt1n.png" style="width:100%!important" />
+            </div>
+            <div class="col-lg-3">
+                <img src="~/Photos/tt2n.png" style="width:100%!important" />
+            </div>
+            <div class="col-lg-3">
+                <img src="~/Photos/tt3n.png" style="width:100%!important" />
+            </div>
+            <div class="col-lg-3">
+                <img src="~/Photos/tt4n.png" style="width:100%!important" />
+            </div>
+        </div>
+    </div>
+    
+    <!-- END OF /. FOOTER -->
+    <!-- START SUB FOOTER -->
+    <div class="sub-footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12 col-sm-5 col-md-5">
+                    <div class="copy">Copyright Krekpot Bilişim</div>
+                </div>
+                <div class="col-xs-12 col-sm-7 col-md-7">
+                    <ul class="footer-nav">
+                        @*<li><a href="@Url.Action("Gizlilik", "Home")">Gizlilik</a></li>*@
+                        <li><a href="@Url.Action("Iletisim", "Home")">İletişim</a></li>
+                        <li><a href="@Url.Action("Hakkimizda", "Home")">Hakkımızda</a></li>
+                        @*<li><a href="@Url.Action("Bagis", "Home")">Bağış</a></li>*@
+                        <li><a href="@Url.Action("Arsiv", "Home")">Arşiv</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- END OF /. SUB FOOTER -->
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="~/assets/plugins/jquery/jquery.js"></script>
+    <!-- jquery ui js -->
+    <script src="~/assets/plugins/jqueryui/jquery-ui.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="~/assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+    <!-- Bootsnav js -->
+    <script src="~/assets/plugins/bootsnav/js/bootsnav.min.js"></script>
+    <!-- theia sticky sidebar -->
+    <script src="~/assets/plugins/theia-sticky-sidebar/ResizeSensor.min.js"></script>
+    <script src="~/assets/plugins/theia-sticky-sidebar/theia-sticky-sidebar.min.js"></script>
+    <!-- youtube js -->
+    <script src="~/assets/plugins/youtube-player/js/RYPP.js"></script>
+    <!-- owl include js plugin -->
+    <script src="~/assets/plugins/OwlCarousel2/owl.carousel.min.js"></script>
+    <!-- skycons plugin -->
+    <script src="~/assets/plugins/skycons/skycons.js"></script>
+    <!-- custom js -->
+    <script src="~/assets/js/custom.js"></script>
+    @*<script src="https://code.jquery.com/jquery-1.11.3.js"></script>*@
+    <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+    @*<link href="https://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css" rel="stylesheet" type="text/css" />*@
+</body>
+</html>
+
+
+<div class="modal fade" id="UyeOl" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title text-center" id="exampleModalLabel">
+                    <img src="~/Photos/navigalogo.png" style="height:30px;" /><br /><br />
+                    Naviga Magazin Üye Ol
+                </h5>
+
+
+            </div>
+            <form action="@Url.Action("UserAdd", "Home")" method="post" enctype="multipart/form-data" class="form-group">
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <br />
+                            <label>Kullanıcı Adı</label>
+                            <input type="text" name="username" class="form-control" placeholder="Kullanıcı Adı" required />
+                        </div>
+                        <div class="col-lg-6">
+                            <br />
+                            <label>Kullanıcı Soyadı</label>
+                            <input type="text" name="usersurname" class="form-control" placeholder="Kullanıcı Soyadı" required />
+                        </div>
+                        <div class="col-lg-6">
+                            <br />
+                            <label>Kullanıcı E-Mail</label>
+                            <input type="email" name="useremail" class="form-control" placeholder="Kullanıcı E-Mail" required />
+                        </div>
+                        <div class="col-lg-6">
+                            <br />
+                            <label>Kullanıcı Şifresi</label>
+                            <input type="password" name="userpassword" class="form-control" placeholder="Kullanıcı Şifresi" required minlength="8" />
+                        </div>
+                        <div class="col-lg-6">
+                            <br />
+                            <label>Kullanıcı Fotoğrafı</label>
+                            <input type="file" name="userphoto" required />
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-12 text-center">
+                            <br /><br />
+                            <a href="https://www.facebook.com/NavigaMagazin?fref=ts"><i class="fab fa-facebook-f"></i></a>
+                            <a href="https://twitter.com/NavigaMagazin"><i class="fab fa-twitter"></i></a></li>
+                            <a href="https://tr.linkedin.com/company/naviga-magazin"><i class="fab fa-linkedin"></i></a>
+                            <a href="https://www.instagram.com/navigamagazin/"><i class="fab fa-instagram"></i></a>
+                            <a href="https://www.youtube.com/channel/UC5d0tuuHPACSCl_KDzupPDg"><i class="fab fa-youtube"></i></a>
+                        </div>
+                    </div>
+                </div>
+                @if (ViewBag.user == "no")
+                {
+                    <div class="alert alert-warning" role="alert">
+                        Girilen mail adresi kayıtlıdır, lütfen farklı mail adresi kullanın!
+                    </div>
+                }
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Kapat</button>
+                    <input type="submit" class="btn btn-news" value="Üye Ol">
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="GirisYap" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title text-center" id="exampleModalLabel">
+                    <img src="~/Photos/navigalogo.png" style="height:30px;" /><br /><br />
+                    Naviga Magazin Giriş Yap
+                </h5>
+
+            </div>
+            @if (ViewBag.user == "ok")
+            {
+                <div class="alert alert-success" role="alert">
+                    Kullanıcı kaydı başarılı ! Giriş yapabilirsiniz.
+                </div>
+            }
+            <form class="form-group" method="post" action="@Url.Action("Login", "Home")">
+                <div class="modal-body">
+
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <br />
+                            <label>Kullanıcı E-Mail</label>
+                            <input type="email" name="useremail" class="form-control" placeholder="Kullanıcı Adı" required />
+
+
+                        </div>
+                        <div class="col-lg-6">
+                            <br />
+                            <label>Kullanıcı Şifresi</label>
+                            <input type="password" name="userpassword" class="form-control" placeholder="Kullanıcı Şifresi" required />
+                        </div>
+                        <div class="col-lg-12 text-center">
+                            <br /><br />
+                            <a href="#" data-toggle="modal" data-target="#SifremiUnuttum" data-dismiss="modal">Şifremi Unuttum</a>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-12 text-center">
+                            <br /><br />
+                            <a href="https://www.facebook.com/NavigaMagazin?fref=ts"><i class="fab fa-facebook-f"></i></a>
+                            <a href="https://twitter.com/NavigaMagazin"><i class="fab fa-twitter"></i></a></li>
+                            <a href="https://tr.linkedin.com/company/naviga-magazin"><i class="fab fa-linkedin"></i></a>
+                            <a href="https://www.instagram.com/navigamagazin/"><i class="fab fa-instagram"></i></a>
+                            <a href="https://www.youtube.com/channel/UC5d0tuuHPACSCl_KDzupPDg"><i class="fab fa-youtube"></i></a>
+                        </div>
+                    </div>
+                </div>
+                @if (ViewBag.login == "no")
+                {
+                    <div class="alert alert-danger" role="alert">
+                        Kullanıcı adı veya şifre hatalı ! Şifrenizi unuttuysanız "şifremi unuttum" adımını kullanabilirsiniz.
+                    </div>
+                }
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Kapat</button>
+                    <input type="submit" class="btn btn-news" value="Giriş Yap">
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="SifremiUnuttum" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title text-center" id="exampleModalLabel">
+                    <img src="~/Photos/navigalogo.png" style="height:30px;" /><br /><br />
+                    Naviga Magazin Şifremi Unuttum
+                </h5>
+            </div>
+            <form class="form-group">
+                <div class="modal-body">
+
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <br />
+                            <label>Kullanıcı Adı</label>
+                            <input type="text" name="username" class="form-control" placeholder="Kullanıcı Adı" required />
+                        </div>
+                        <div class="col-lg-6">
+                            <br />
+                            <label>Kullanıcı E-Mail</label>
+                            <input type="email" name="useremail" class="form-control" placeholder="Kullanıcı E-Mail" required />
+                        </div>
+                        <br />
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-12 text-center">
+                            <br /><br />
+                            <a href="https://www.facebook.com/NavigaMagazin?fref=ts"><i class="fab fa-facebook-f"></i></a>
+                            <a href="https://twitter.com/NavigaMagazin"><i class="fab fa-twitter"></i></a></li>
+                            <a href="https://tr.linkedin.com/company/naviga-magazin"><i class="fab fa-linkedin"></i></a>
+                            <a href="https://www.instagram.com/navigamagazin/"><i class="fab fa-instagram"></i></a>
+                            <a href="https://www.youtube.com/channel/UC5d0tuuHPACSCl_KDzupPDg"><i class="fab fa-youtube"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+
+
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Kapat</button>
+                    <input type="submit" class="btn btn-news" value="Şifremi Unuttum">
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="approvalrequest" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title text-center" id="exampleModalLabel">Başarılı !</h5>
+            </div>
+            <div class="modal-body">
+                <div class="alert alert-success" role="alert">
+                    Tebrikler ! İçeriğiniz tarafımıza ulaştı, onaylandığı zaman tarafınıza mail olarak bilgi verilecektir!
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="Ebulten" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title text-center" id="exampleModalLabel">Bilgi Mesajı !</h5>
+
+            </div>
+
+
+            <div class="modal-body">
+
+                <div class="row">
+                    @if (ViewBag.ebulten == "ok")
+                    {
+                        <div class="alert alert-success" role="alert">
+                            Başarılı ! E-Bülten kaydınız tarafımıza ulaşmıştır !
+                        </div>
+                    }
+
+                    @if (ViewBag.ebulten == "no")
+                    {
+                        <div class="alert alert-danger" role="alert">
+                            Bu mail adresi daha önceden E-Bültene kayıt edilmiştir !
+                        </div>
+                    }
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Kapat</button>
+
+            </div>
+
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="ShowModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+
+
+
+            <div class="modal-body">
+
+                <div class="row">
+                    @{Html.RenderAction("ModalPage", "Partial");}
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript" language="javascript">
+    $(document).ready(function () {
+            if('@ViewBag.user' == "no") {
+       $("#UyeOl").modal();
+     }
+    });
+        $(document).ready(function () {
+            if('@ViewBag.user' == "ok") {
+       $("#GirisYap").modal();
+     }
+        });
+        $(document).ready(function () {
+            if('@ViewBag.ebulten' == "ok" ) {
+                $("#Ebulten").modal();
+     }
+        });
+            $(document).ready(function () {
+            if('@ViewBag.ebulten' == "no" ) {
+                $("#Ebulten").modal();
+     }
+            });
+    $(document).ready(function () {
+            if('@ViewBag.login' == "no" ) {
+                $("#GirisYap").modal();
+     }
+    });
+
+    $(document).ready(function () {
+            if('@ViewBag.approvalrequest' == "ok" ) {
+                $("#approvalrequest").modal();
+     }
+    });
+
+    $(document).ready(function () {
+            if('@ViewBag.modal' == "ok" ) {
+                $("#ShowModal").modal();
+     }
+            });
+
+
+
+
+</script>

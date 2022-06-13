@@ -1,0 +1,86 @@
+﻿
+@{
+    ViewBag.Title = "Site Ayarları";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+<div class="page-header row no-gutters py-4">
+    <div class="col-12 col-sm-12 text-center text-sm-left mb-0">
+        <span class="text-uppercase page-subtitle">Sorular</span>
+    </div>
+
+</div>
+<div class="row">
+
+    <div class="col-lg-6">
+        <a href="@Url.Action("Sorular","Admin")">
+            <div class="col mb-4">
+
+                <div class="bg-info rounded text-white text-center p-3" style="box-shadow: inset 0 0 5px rgba(0,0,0,.2);">SORULAR</div>
+
+            </div>
+        </a>
+
+    </div>
+    <div class="col-lg-6">
+        <a href="@Url.Action("SoruGir","Admin")">
+            <div class="col mb-4">
+
+                <div class="bg-info rounded text-white text-center p-3" style="box-shadow: inset 0 0 5px rgba(0,0,0,.2);">SORU GİR</div>
+
+            </div>
+        </a>
+
+    </div>
+</div>
+
+<div class="page-header row no-gutters py-4">
+    <div class="col-12 col-sm-12 text-center text-sm-left mb-0">
+        <span class="text-uppercase page-subtitle">Takvim & Fırtına Takvimi</span>
+    </div>
+
+</div>
+<div class="row">
+
+    <div class="col-lg-6">
+        <a href="@Url.Action("Calender","Settings")">
+            <div class="col mb-4">
+
+                <div class="bg-info rounded text-white text-center p-3" style="box-shadow: inset 0 0 5px rgba(0,0,0,.2);">TAKVİM</div>
+
+            </div>
+        </a>
+
+    </div>
+    <div class="col-lg-6">
+        <a href="@Url.Action("StormCalender","Settings")">
+            <div class="col mb-4">
+
+                <div class="bg-info rounded text-white text-center p-3" style="box-shadow: inset 0 0 5px rgba(0,0,0,.2);">FIRTINA TAKVİMİ</div>
+
+            </div>
+        </a>
+
+    </div>
+</div>
+<div class="page-header row no-gutters py-4">
+    <div class="col-12 col-sm-12 text-center text-sm-left mb-0">
+        <span class="text-uppercase page-subtitle">Aylık Dergi & Açılır Modal</span>
+    </div>
+</div>
+<div class="row">
+    <div class="col-lg-6">
+        <a href="@Url.Action("Magazine","Settings")">
+            <div class="col mb-4">
+                <div class="bg-info rounded text-white text-center p-3" style="box-shadow: inset 0 0 5px rgba(0,0,0,.2);">AYLIK DERGİ</div>
+            </div>
+        </a>
+    </div>
+    <div class="col-lg-6">
+        <a href="@Url.Action("Modal","Settings")">
+            <div class="col mb-4">
+                <div class="bg-info rounded text-white text-center p-3" style="box-shadow: inset 0 0 5px rgba(0,0,0,.2);">MODAL AYARLARI</div>
+            </div>
+        </a>
+    </div>
+</div>

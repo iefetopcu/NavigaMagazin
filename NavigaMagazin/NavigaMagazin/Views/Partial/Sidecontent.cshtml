@@ -1,0 +1,115 @@
+﻿<div class="col-sm-4 col-p rightSidebar">
+    <div class="theiaStickySidebar">
+
+
+        <!-- START ADVERTISEMENT -->
+
+        <div class="add-inner">
+            @{Html.RenderAction("ad320x270", "Partial");}
+        </div>
+        <div class="add-inner" style="margin-bottom:10px; padding:0px!important;">
+            @{Html.RenderAction("lastmagazine", "Partial");}
+           
+                <a href="https://www.denizkutuphanesi.com/urun/naviga-abonelik"><button class="btn btn-news" style="width:100%!important;">Satın Al</button></a>
+           
+        </div>
+        <!-- END OF /. ADVERTISEMENT -->
+        <!-- START NAV TABS -->
+        <div class="tabs-wrapper">
+            <ul class="nav nav-tabs" role="tablist">
+                <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">En Popüler</a></li>
+                <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">En Son</a></li>
+            </ul>
+            <!-- Tab panels one -->
+            <div class="tab-content">
+                <div role="tabpanel" class="tab-pane fade in active" id="home">
+
+                    <div class="most-viewed">
+                        <ul id="most-today" class="content tabs-content">
+                            @{Html.RenderAction("SidebarPopuler", "Partial");}
+                        </ul>
+                    </div>
+                </div>
+                <!-- Tab panels two -->
+                <div role="tabpanel" class="tab-pane fade" id="profile">
+                    <div class="popular-news">
+
+                        @{Html.RenderAction("SidebarLatest", "Partial");}
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- END OF /. NAV TABS -->
+        <!-- START SOCIAL ICON -->
+        <div class="add-inner" style="margin-bottom:10px; padding:0px!important;">
+            @{Html.RenderAction("ad320x540", "Partial");}
+        </div>
+        <div class="add-inner" style="margin-bottom:10px; padding:0px!important;">
+            @{Html.RenderAction("EventCalendar", "Partial");}
+        </div>
+        <div class="add-inner">
+            <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                <tbody>
+                    <tr>
+                        <td width="33%" height="100">
+                            <a class="weatherwidget-io" href="https://forecast7.com/en/41d0128d98/istanbul/" data-label_1="İSTANBUL" data-label_2="HAVA DURUMU" data-mode="Current" data-theme="marine" style="display: block; position: relative; height: 198px; padding: 0px; overflow: hidden; text-align: left; text-indent: -299rem;">İSTANBUL<iframe id="weatherwidget-io-0" class="weatherwidget-io-frame" title="Weather Widget" scrolling="no" frameborder="0" width="100%" src="https://weatherwidget.io/w/" style="display: block; position: absolute; top: 0px; height: 198px;"></iframe></a>
+                            <script>
+                                !function (d, s, id) { var js, fjs = d.getElementsByTagName(s)[0]; if (!d.getElementById(id)) { js = d.createElement(s); js.id = id; js.src = 'https://weatherwidget.io/js/widget.min.js'; fjs.parentNode.insertBefore(js, fjs); } }(document, 'script', 'weatherwidget-io-js');
+                            </script>
+                        </td>
+                        <td width="5">&nbsp;</td>
+                        <td width="33%">
+                            <a class="weatherwidget-io" href="https://forecast7.com/en/37d1828d49/mugla-province/" data-label_1="MUĞLA" data-label_2="HAVA DURUMU" data-mode="Current" data-days="3" data-theme="marine" style="display: block; position: relative; height: 198px; padding: 0px; overflow: hidden; text-align: left; text-indent: -299rem;">MUĞLA<iframe id="weatherwidget-io-1" class="weatherwidget-io-frame" title="Weather Widget" scrolling="no" frameborder="0" width="100%" src="https://weatherwidget.io/w/" style="display: block; position: absolute; top: 0px; height: 198px;"></iframe></a>
+                            <script>
+                                !function (d, s, id) { var js, fjs = d.getElementsByTagName(s)[0]; if (!d.getElementById(id)) { js = d.createElement(s); js.id = id; js.src = 'https://weatherwidget.io/js/widget.min.js'; fjs.parentNode.insertBefore(js, fjs); } }(document, 'script', 'weatherwidget-io-js');
+                            </script>
+                        </td>
+                        <td width="5">&nbsp;</td>
+                        <td width="33%">
+                            <a class="weatherwidget-io" href="https://forecast7.com/en/36d7528d94/gocek-belediyesi/" data-label_1="GÖCEK" data-label_2="HAVA DURUMU" data-mode="Current" data-theme="marine" style="display: block; position: relative; height: 198px; padding: 0px; overflow: hidden; text-align: left; text-indent: -299rem;">GÖCEK<iframe id="weatherwidget-io-2" class="weatherwidget-io-frame" title="Weather Widget" scrolling="no" frameborder="0" width="100%" src="https://weatherwidget.io/w/" style="display: block; position: absolute; top: 0px; height: 198px;"></iframe></a>
+                            <script>
+                                !function (d, s, id) { var js, fjs = d.getElementsByTagName(s)[0]; if (!d.getElementById(id)) { js = d.createElement(s); js.id = id; js.src = 'https://weatherwidget.io/js/widget.min.js'; fjs.parentNode.insertBefore(js, fjs); } }(document, 'script', 'weatherwidget-io-js');
+                            </script>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td width="33%">
+                            <a class="weatherwidget-io" href="https://forecast7.com/en/38d4227d14/izmir/" data-label_1="İZMIR" data-label_2="HAVA DURUMU" data-mode="Current" data-theme="marine" style="display: block; position: relative; height: 198px; padding: 0px; overflow: hidden; text-align: left; text-indent: -299rem;">İZMIR WEATHER<iframe id="weatherwidget-io-3" class="weatherwidget-io-frame" title="Weather Widget" scrolling="no" frameborder="0" width="100%" src="https://weatherwidget.io/w/" style="display: block; position: absolute; top: 0px; height: 198px;"></iframe></a>
+                            <script>
+                                !function (d, s, id) { var js, fjs = d.getElementsByTagName(s)[0]; if (!d.getElementById(id)) { js = d.createElement(s); js.id = id; js.src = 'https://weatherwidget.io/js/widget.min.js'; fjs.parentNode.insertBefore(js, fjs); } }(document, 'script', 'weatherwidget-io-js');
+                            </script>
+                        </td>
+                        <td width="5">&nbsp;</td>
+                        <td width="33%">
+                            <a class="weatherwidget-io" href="https://forecast7.com/en/36d8528d27/marmaris/" data-label_1="MARMARIS" data-label_2="HAVA DURUMU" data-mode="Current" data-theme="marine" style="display: block; position: relative; height: 198px; padding: 0px; overflow: hidden; text-align: left; text-indent: -299rem;">MARMARIS WEATHER<iframe id="weatherwidget-io-4" class="weatherwidget-io-frame" title="Weather Widget" scrolling="no" frameborder="0" width="100%" src="https://weatherwidget.io/w/" style="display: block; position: absolute; top: 0px; height: 198px;"></iframe></a>
+                            <script>
+                                !function (d, s, id) { var js, fjs = d.getElementsByTagName(s)[0]; if (!d.getElementById(id)) { js = d.createElement(s); js.id = id; js.src = 'https://weatherwidget.io/js/widget.min.js'; fjs.parentNode.insertBefore(js, fjs); } }(document, 'script', 'weatherwidget-io-js');
+                            </script>
+                        </td>
+                        <td width="5">&nbsp;</td>
+                        <td width="33%">
+                            <a class="weatherwidget-io" href="https://forecast7.com/en/36d9030d71/antalya/" data-label_1="ANTALYA" data-label_2="HAVA DURUMU" data-mode="Current" data-theme="marine" style="display: block; position: relative; height: 198px; padding: 0px; overflow: hidden; text-align: left; text-indent: -299rem;">ANTALYA<iframe id="weatherwidget-io-5" class="weatherwidget-io-frame" title="Weather Widget" scrolling="no" frameborder="0" width="100%" src="https://weatherwidget.io/w/" style="display: block; position: absolute; top: 0px; height: 198px;"></iframe></a>
+                            <script>
+                                !function (d, s, id) { var js, fjs = d.getElementsByTagName(s)[0]; if (!d.getElementById(id)) { js = d.createElement(s); js.id = id; js.src = 'https://weatherwidget.io/js/widget.min.js'; fjs.parentNode.insertBefore(js, fjs); } }(document, 'script', 'weatherwidget-io-js');
+                            </script>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="add-inner" style="margin-bottom:10px; padding:0px!important;">
+            @{Html.RenderAction("StormCalender", "Partial");}
+        </div>
+        
+        <div class="add-inner">
+            <a href="@Url.Action("NavigaTV", "Home")">
+                <img src="~/Photos/navigaTV.png" style="width:100%!important;" />
+            </a>
+        </div>
+        <div class="add-inner">
+            <a href="@Url.Action("SoruSor", "Home")">
+                <button class="btn btn-news" style="width:100%!important;">Soru Sor</button></a>
+        </div>
+        <!-- END OF /. SOCIAL ICON -->
+    </div>
+</div>

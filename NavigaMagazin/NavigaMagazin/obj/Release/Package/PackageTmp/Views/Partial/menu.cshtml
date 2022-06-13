@@ -1,0 +1,142 @@
+﻿@using NavigaMagazin.Models.Entity
+
+
+<nav class="navbar navbar-default navbar-sticky navbar-mobile bootsnav">
+    <!-- Start Top Search -->
+    <div class="top-search">
+        <div class="container">
+            <div class="input-group">
+                <span class="input-group-addon"><i class="fa fa-search"></i></span>
+                <form action="@Url.Action("Ara", "Home")" method="post">
+                    <input type="text" class="form-control" placeholder="İçerik Ara" name="searchkey">
+                </form>
+                
+                <span class="input-group-addon close-search"><i class="fa fa-times"></i></span>
+            </div>
+        </div>
+    </div>
+    <!-- End Top Search -->
+    <div class="container">
+        <!-- Start Atribute Navigation -->
+        <div class="attr-nav">
+            <ul>
+                <li class="search"><a href="#"><i class="fa fa-search"></i></a></li>
+            </ul>
+        </div>
+        <!-- End Atribute Navigation -->
+        <!-- Start Header Navigation -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-menu">
+                <i class="fa fa-bars"></i>
+            </button>
+            <a class="navbar-brand hidden-sm hidden-md hidden-lg" href="#brand"><img src="~/assets/images/logo.png" class="logo" alt=""></a>
+        </div>
+        <!-- End Header Navigation -->
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="navbar-menu">
+            <ul class="nav navbar-nav navbar-left" data-in="" data-out="">
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">YELKENLİ</a>
+                    <ul class="dropdown-menu">
+                        @foreach (var menulist in Model)
+                        {
+                            if (menulist.MenuTable.menuname == "Yelkenli")
+                            {
+                                <li><a href="@Url.Action("Menu", "Home" , new {id = menulist.id})">@menulist.categoryname</a></li>
+                            }
+                        }
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">MOTORYAT</a>
+                    <ul class="dropdown-menu">
+                        @foreach (var menulist in Model)
+                        {
+                            if (menulist.MenuTable.menuname == "Motoryat")
+                            {
+                                <li><a href="@Url.Action("Menu", "Home" , new {id = menulist.id})">@menulist.categoryname</a></li>
+                            }
+                        }
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">RİB</a>
+                    <ul class="dropdown-menu">
+                        @foreach (var menulist in Model)
+                        {
+                            if (menulist.MenuTable.menuname == "Rib")
+                            {
+                                <li><a href="@Url.Action("Menu", "Home" , new {id = menulist.id})">@menulist.categoryname</a></li>
+                            }
+                        }
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">TEKNİK</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="@Url.Action("TeknikKurul", "Home")">Teknik Kurul</a></li>
+                        @foreach (var menulist in Model)
+                        {
+                            if (menulist.MenuTable.menuname == "Teknik")
+                            {
+                                <li><a href="@Url.Action("Menu", "Home" , new {id = menulist.id})">@menulist.categoryname</a></li>
+                            }
+                        }
+                    </ul>
+                </li>
+
+
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">ÜRÜNLER</a>
+                    <ul class="dropdown-menu">
+                        @foreach (var menulist in Model)
+                        {
+                            if (menulist.MenuTable.menuname == "Urunler")
+                            {
+                                <li><a href="@Url.Action("Menu", "Home" , new {id = menulist.id})">@menulist.categoryname</a></li>
+                            }
+                        }
+                    </ul>
+                </li>
+
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">HABERLER</a>
+                    <ul class="dropdown-menu">
+                        @foreach (var menulist in Model)
+                        {
+                            if (menulist.MenuTable.menuname == "Haberler")
+                            {
+                                <li><a href="@Url.Action("Menu", "Home" , new {id = menulist.id})">@menulist.categoryname</a></li>
+                            }
+                        }
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">ROTA</a>
+                    <ul class="dropdown-menu">
+                        @foreach (var menulist in Model)
+                        {
+                            if (menulist.MenuTable.menuname == "Rota")
+                            {
+                                <li><a href="@Url.Action("Menu", "Home" , new {id = menulist.id})">@menulist.categoryname</a></li>
+                            }
+                        }
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">KUZİNE</a>
+                    <ul class="dropdown-menu">
+                        @foreach (var menulist in Model)
+                        {
+                            if (menulist.MenuTable.menuname == "Kuzine")
+                            {
+                                <li><a href="@Url.Action("Menu", "Home" , new {id = menulist.id})">@menulist.categoryname</a></li>
+                            }
+                        }
+                    </ul>
+                </li>
+                <li><a href="@Url.Action("Yazarlar", "Home")">YAZARLAR</a></li>
+            </ul>
+        </div><!-- /.navbar-collapse -->
+    </div>
+</nav>

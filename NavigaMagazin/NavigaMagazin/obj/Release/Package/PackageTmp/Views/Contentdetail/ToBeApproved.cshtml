@@ -1,0 +1,162 @@
+﻿@model NavigaMagazin.Models.Entity.ContentTable
+@{
+    ViewBag.Title = "ToBeApproved";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+<script src="https://cdn.ckeditor.com/4.15.1/full/ckeditor.js"></script>
+<div class="main-content-container container-fluid px-4">
+
+    <div class="page-header row no-gutters py-4">
+        <div class="col-12 col-sm-4 text-center text-sm-left mb-0">
+            <span class="text-uppercase page-subtitle"></span>
+            <h3 class="page-title">İçerik Onayla</h3>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-12" style="color:orangered">
+            <ul>
+                <li>
+                    İçeriği onaylamadan önce yayınlacak tarihi girmeniz gerekmektedir.
+                </li>
+                <li>
+                    İçerik kategorisi, başlık , açıklama ve içeriği kontrol ediniz.
+                </li>
+                <li>
+                    Reddettiğiniz içerikler silinecektir.
+                </li>
+            </ul>
+        </div>
+    </div>
+    @using (Html.BeginForm("ToBeApproved", "Contentdetail", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        <div class="row">
+            <div class="col-lg-9 col-md-12">
+                <div class="card card-small mb-3">
+                    <div class="card-body">
+
+                        @Html.TextBoxFor(m => m.posttitle, new { @class = "form-control form-control-lg mb-3", @maxlength = "65" })
+                        @Html.TextBoxFor(m => m.postspottext, new { @class = "form-control form-control-lg mb-3", @maxlength = "170" })
+
+                        <div class="add-new-post__editor mb-1">
+
+                            <textarea name="postcontent">@Model.postcontent</textarea><br /><br />
+                            <script>
+                                CKEDITOR.replace('postcontent');
+                            </script>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-12">
+                <div class='card card-small mb-3'>
+                    <div class="card-header border-bottom">
+                        <h6 class="m-0">Detaylar ve Fotoğraf</h6>
+                    </div>
+                    <div class='card-body p-0'>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item p-3">
+
+
+
+
+
+                                <span class="d-flex mb-2">
+                                    <i class="material-icons mr-1">flag</i>
+                                    <strong class="mr-1">Durum </strong>
+                                    @Html.DropDownListFor(m => m.isaktif, new List<SelectListItem>
+               { new SelectListItem{Text="Aktif", Value="1"},
+               new SelectListItem{Text="Pasif", Value="2"}}, new { @class = "ml-auto" })
+                                </span>
+                                <span class="d-flex mb-2">
+                                    <div class="row">
+                                        <div class="col-lg-12">
+                                            <img src="@Model.postphoto" style="width:100%!important; padding:20px;" />
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <strong class="mr-1">İçerik Fotoğrafı<br /> ( 695 x 460 ) </strong>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <strong class="ml-1">
+                                                <input type="file" name="postphoto" />
+                                            </strong>
+                                        </div>
+                                    </div>
+
+
+                                </span>
+
+                            </li>
+
+                        </ul>
+                    </div>
+                </div>
+                <div class='card card-small mb-3'>
+                    <div class="card-header border-bottom">
+                        <h6 class="m-0">Kategori</h6>
+                    </div>
+                    <div class='card-body p-0'>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item p-3">
+                                <span class="d-flex mb-2">
+                                    <i class="material-icons mr-1">storage</i>
+                                    <strong class="mr-1">Kategori </strong>
+                                    @Html.DropDownListFor(m => m.categoryid, (List<SelectListItem>)ViewBag.categories, new { @class = "ml-auto" })
+                                </span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class='card card-small mb-3'>
+                    <div class="card-header border-bottom">
+                        <h6 class="m-0">Tarih</h6>
+                    </div>
+                    <div class='card-body p-0'>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item p-3">
+
+
+                                <span class="d-flex mb-2">
+                                    <i class="material-icons mr-1">calendar_today</i>
+                                    <strong class="mr-1">Yayınlanma Zamanı </strong>
+                                    <input type="text" id="datepicker" name="releasetime" required="required" class="ml-auto" value="@Model.releasetime"><br />
+                                </span>
+
+                            </li>
+                            <li class="list-group-item d-flex px-3">
+                                <a href="@Url.Action("RejectContent", "Contentdetail" , new { id = Model.id })">
+                                    <button class="btn btn-sm btn-danger ml-auto">
+                                        <i class="material-icons">close</i> Reddet
+                                    </button>
+                                </a>
+                                
+                                <button class="btn btn-sm btn-accent ml-auto">
+                                    <i class="material-icons">file_copy</i> Onayla
+                                </button>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    }
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.0/themes/base/jquery-ui.css">
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.js"></script>
+    <script>
+        $(function () {
+
+
+            $("#datepicker").datepicker({
+                dateFormat: 'yy-mm-dd'
+            }).datepicker();
+            ;
+        });
+    </script>
+</div>
+
+
+
+

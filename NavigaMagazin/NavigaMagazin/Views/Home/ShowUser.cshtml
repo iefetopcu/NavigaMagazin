@@ -1,0 +1,110 @@
+﻿@model NavigaMagazin.Models.Entity.UserTable
+@{
+    ViewBag.Title = "Kullanıcı Görüntüle "+Model.username +Model.usersurname;
+    ViewBag.Description = "Naviga Magazin Kullanıcı Sayfası";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="page-title">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-sm-6 col-md-6">
+                <h1><strong>Kullanıcı Detayları</strong></h1>
+            </div>
+            <div class="col-xs-12 col-sm-6 col-md-6">
+                <ol class="breadcrumb">
+                    <li><a href="@Url.Action("Index", "Home")">Anasayfa</a></li>
+                    <li class="active"><a href="@Url.Action("ShowUser", "Home" , new {id = Model.id})">@Model.username @Model.usersurname</a></li>
+                </ol>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="team about-content">
+    <div class="container">
+
+        <div class="row">
+            
+                <div class="col-md-3 col-sm-6 col-xs-12">
+                    <figure class="member">
+                        <img src="@Model.userphoto" class="img-responsive" alt="Image" style="height:300px;">
+                        @if (Model.approved == "true")
+                        {
+                    <img src="~/Photos/check.png" class="img-responsive" alt="Image" style="height:50px; width:50px; margin-top:-55px; margin-left:10px;">
+                        }
+
+                        <figcaption>
+                            <h4>@Model.username @Model.usersurname</h4>
+                            <small>Yazar</small>
+
+                            <ul>
+                                <li><a href="@Model.userfacebook" target="_blank"><i class="fab fa-facebook-f"></i></a></li>
+                                <li><a href="@Model.usertwitter" target="_blank"><i class="fab fa-twitter"></i></a></li>
+                                <li><a href="@Model.useryoutube" target="_blank"><i class="fab fa-youtube"></i></a></li>
+                                <li><a href="@Model.userlinkedin" target="_blank"><i class="fab fa-linkedin-in"></i></a></li>
+                            </ul>
+                            @if (Model.approved == "true")
+                            {
+                                <small style="color:#0e6b18"><b>Onaylı Hesap</b></small>
+                            }
+                        </figcaption>
+                    </figure>
+                    <!-- end member -->
+                </div>
+                <div class="col-sm-9 col-p  main-content">
+                    <div class="theiaStickySidebar">
+                        <div class="post-inner categoty-style-1">
+                            <!-- post body -->
+                            <div class="post-body">
+                                <div class="row row-m">
+                                    @foreach (var item in Model.ContentTables)
+                                    {
+                                        <div class="col-sm-6 col-p">
+                                            <article>
+                                                <figure>
+                                                    <a href="@Url.Action("Oku","Home", new { url = item.url })"><img src="@item.postphoto" height="242" width="345" alt="@item.postlike" class="img-responsive"></a>
+                                                    <span class="post-category">@item.CategoryTable.categoryname</span>
+                                                </figure>
+                                                <div class="post-info">
+                                                    <h3><a href="@Url.Action("Oku","Home", new { url = item.url })">@item.posttitle</a></h3>
+                                                    <ul class="authar-info">
+                                                        <li><i class="ti-timer"></i> @item.releasetime.Value.ToString("dd.MM.yyyy")</li>
+                                                        <li><a href="#" class="link"><i class="ti-thumb-up"></i>@item.postlike</a></li>
+                                                    </ul>
+                                                </div>
+                                            </article>
+                                        </div>
+                                    }
+                                </div>
+                            </div>
+                            <!-- Post footer -->
+                            <div class="post-footer">
+                                <div class="row thm-margin">
+                                    <div class="col-xs-12 col-sm-12 col-md-12 thm-padding">
+                                        <!-- pagination -->
+                                        <ul class="pagination">
+                                            <li class="disabled"><span class="ti-angle-left"></span></li>
+                                            <li class="active"><span>1</span></li>
+                                            <li><a href="#">2</a></li>
+                                            <li><a href="#">3</a></li>
+                                            <li class="disabled"><span class="extend">...</span></li>
+                                            <li>
+                                            <li><a href="#">12</a></li>
+                                            <li><a href="#"><i class="ti-angle-right"></i></a></li>
+                                        </ul> <!-- /.pagination -->
+                                    </div>
+                                </div>
+                            </div> <!-- /.Post footer-->
+                        </div>
+                    </div>
+                </div>
+            <!-- end col-12 -->
+            <!-- end col-3 -->
+
+        </div>
+        <!-- end row -->
+
+    </div>
+</div>
+
+
+

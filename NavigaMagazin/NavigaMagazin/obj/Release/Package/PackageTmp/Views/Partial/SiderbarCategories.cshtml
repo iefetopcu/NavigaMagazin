@@ -1,0 +1,5 @@
+﻿@using NavigaMagazin.Models.Entity
+@foreach (var sidebarcat in Model)
+{
+    <li><a href="@Url.Action("Menu", "Home" , new {id = sidebarcat.id})">@sidebarcat.categoryname </a></li>
+}

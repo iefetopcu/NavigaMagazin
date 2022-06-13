@@ -1,0 +1,23 @@
+﻿@using NavigaMagazin.Models.Entity
+@foreach (var showroom in Model)
+{
+
+    <div class="col-sm-4 main-post-inner">
+        <article>
+            <figure>
+                <a href="@Url.Action("Oku","Home", new { url = showroom.url })"><img src="@showroom.postphoto" height="242" width="345" alt="@showroom.posttitle" class="img-responsive"></a>
+                <span class="post-category">@showroom.CategoryTable.categoryname</span>
+            </figure>
+            <div class="post-info">
+                <h3><a href="@Url.Action("Oku","Home", new { url = showroom.url })">@showroom.posttitle</a></h3>
+                <ul class="authar-info">
+                    <li><i class="ti-timer"></i>@showroom.releasetime.ToString("dd.MM.yyyy")</li>
+                    <li class="like"><i class="ti-thumb-up"></i>@showroom.postlike</li>
+                </ul>
+                <p>@showroom.postspottext</p>
+            </div>
+        </article>
+
+    </div>
+
+}

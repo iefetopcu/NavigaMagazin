@@ -1,0 +1,52 @@
+﻿@using NavigaMagazin.Models.Entity
+@{
+    ViewBag.Title = "Yazarlar";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="page-title">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-sm-6 col-md-6">
+                <h1><strong>Yazarlar</strong></h1>
+            </div>
+            <div class="col-xs-12 col-sm-6 col-md-6">
+                <ol class="breadcrumb">
+                    <li><a href="@Url.Action("Index", "Home")">Anasayfa</a></li>
+                    <li class="active"><a href="@Url.Action("Yazarlar", "Home")">Yazarlar</a></li>
+                </ol>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="team about-content">
+    <div class="container">
+
+        <div class="row">
+            @foreach (var user in Model)
+            {
+                <div class="col-md-3 col-sm-6 col-xs-12">
+                    <figure class="member">
+                        <img src="@user.userphoto" class="img-responsive" alt="Image" style="height:300px;">
+                        <figcaption>
+                            <h4>@user.username @user.usersurname</h4>
+                            <small>Yazar</small>
+                            <ul>
+                                <li><a href="@user.userfacebook" target="_blank"><i class="fab fa-facebook-f"></i></a></li>
+                                <li><a href="@user.usertwitter" target="_blank"><i class="fab fa-twitter"></i></a></li>
+                                <li><a href="@user.useryoutube" target="_blank"><i class="fab fa-youtube"></i></a></li>
+                                <li><a href="@user.userlinkedin" target="_blank"><i class="fab fa-linkedin-in"></i></a></li>
+                            </ul>
+                        </figcaption>
+                    </figure>
+                    <!-- end member -->
+                </div>
+            }
+            <!-- end col-12 -->
+            <!-- end col-3 -->
+
+        </div>
+        <!-- end row -->
+
+    </div>
+</div>

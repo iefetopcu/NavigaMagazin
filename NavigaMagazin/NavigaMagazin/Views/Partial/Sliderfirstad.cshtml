@@ -1,0 +1,14 @@
+﻿@model NavigaMagazin.Models.Entity.AdvertisingTable
+
+@if (Model != null)
+{
+    <div class="slider-post post-height-4">
+        <a href="@Url.Action("Admeter","Home", new { id = Model.id })" class="news-image"><img src="@Model.advertisingphoto" alt="@Model.advertisingname" class="img-responsive"></a>
+        <div class="post-text">
+            <span class="post-category">Reklam</span>
+            <h4><a href="@Url.Action("Admeter","Home", new { id = Model.id })">@Model.advertisingname</a></h4>
+
+        </div>
+    </div>
+
+}

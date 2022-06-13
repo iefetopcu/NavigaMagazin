@@ -1,0 +1,14 @@
+﻿@using NavigaMagazin.Models.Entity
+
+@foreach (var sidebarlatest in Model)
+{
+    <div class="p-post">
+        <h4><a href="@Url.Action("Oku","Home", new { url = sidebarlatest.url })">@sidebarlatest.posttitle  </a></h4>
+        <ul class="authar-info">
+            <li class="date"><i class="ti-timer"></i>@sidebarlatest.releasetime.ToString("dd.MM.yyyy")</li>
+            <li class="like"><i class="ti-thumb-up"></i>@sidebarlatest.postlike</li>
+        </ul>
+
+    </div>
+}
+

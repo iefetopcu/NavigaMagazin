@@ -1,0 +1,138 @@
+﻿
+@{
+    ViewBag.Title = "CalenderAdd";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+
+
+<div class="page-header row no-gutters py-4">
+    <div class="col-6 col-sm-6 text-center text-sm-left mb-0">
+        <span class="text-uppercase page-subtitle">Yeni Etkinlik Ekle</span>
+    </div>
+
+
+  
+</div>
+<hr />
+<script src="https://cdn.ckeditor.com/4.15.1/full/ckeditor.js"></script>
+<div class="main-content-container container-fluid px-4">
+
+
+    <div class="row">
+        <div class="col-lg-9 col-md-12">
+            <div class="card card-small mb-3">
+                <div class="card-body">
+                    <form class="add-new-post" method="post" enctype="multipart/form-data">
+                        <input class="form-control form-control-lg mb-3" type="text" placeholder="Etklink Başlığı - Max 65 Karakter" name="calendartitle" required maxlength="65">
+                        
+                        <div class="add-new-post__editor mb-1">
+
+                            <textarea name="calendercontent" required></textarea><br /><br />
+                            <script>
+                                CKEDITOR.replace('calendercontent');
+                            </script>
+                        </div>
+
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-12">
+            
+            
+            <div class='card card-small mb-3'>
+                <div class="card-header border-bottom">
+                    <h6 class="m-0">Tarih ve Yer</h6>
+                </div>
+                <div class='card-body p-0'>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item p-3">
+
+
+                            <span class="d-flex mb-2">
+                                <i class="material-icons mr-1">calendar_today</i>
+                                <strong class="mr-1">Başlama Zamanı </strong>
+                               
+                            </span>
+                            <span class="d-flex mb-2">
+                               
+                                <input type="text" name="calenderstartdate" class="form-control" id="datepicker" required><br />
+                            </span>
+                            <span class="d-flex mb-2">
+                                <i class="material-icons mr-1">calendar_today</i>
+                                <strong class="mr-1">Başlama Zamanı </strong>
+                                
+                            </span>
+                            <span class="d-flex mb-2">
+                              
+                                <input type="text" name="calenderenddate" class="form-control" id="datepicker2" required><br />
+                            </span>
+
+                        </li>
+                        <li class="list-group-item p-3">
+
+
+                            <span class="d-flex mb-2">
+                                <i class="material-icons mr-1">calendar_today</i>
+                                <strong class="mr-1">Yer </strong>
+                                
+                            </span>
+                            <span class="d-flex mb-2">
+                                
+                                <input type="text" name="calenderlocation" class="form-control" required><br />
+                            </span>
+
+                        </li>
+                        <li class="list-group-item d-flex px-3">
+
+                            <button class="btn btn-sm btn-accent ml-auto">
+                                <i class="material-icons">file_copy</i> Yayınla
+                            </button>
+                        </li>
+                    </ul>
+                </div>
+                
+            </div>
+            </form>
+        </div>
+    </div>
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.0/themes/base/jquery-ui.css">
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.js"></script>
+
+</div>
+
+
+
+
+<script>
+    function copyURI(evt) {
+        evt.preventDefault();
+        navigator.clipboard.writeText(evt.target.getAttribute('href')).then(() => {
+            alert("Fotoğraf Linki Kopyalandı !");
+        }, () => {
+            /* clipboard write failed */
+        });
+    }
+
+    $(function () {
+        var dateNow = new Date();
+
+        $("#datepicker").datepicker({
+            dateFormat: "yy-mm-dd",
+        }).datepicker('setDate', new Date());
+        ;
+    });
+
+    $(function () {
+        var dateNow = new Date();
+
+        $("#datepicker2").datepicker({
+            dateFormat: "yy-mm-dd",
+        }).datepicker('setDate', new Date());
+        ;
+    });
+
+
+</script>
+

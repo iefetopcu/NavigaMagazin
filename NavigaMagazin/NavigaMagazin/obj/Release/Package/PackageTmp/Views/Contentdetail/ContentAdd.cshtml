@@ -1,0 +1,213 @@
+﻿@model NavigaMagazin.Models.Entity.ContentTable
+@{
+    ViewBag.Title = "ContentAdd";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+<script>
+    $('#myModal').on('shown.bs.modal', function () {
+        $('#myInput').trigger('focus')
+    })
+    $('#myModal2').on('shown.bs.modal', function () {
+        $('#myInput2').trigger('focus')
+    })
+    $('#myModal3').on('shown.bs.modal', function () {
+        $('#myInput3').trigger('focus')
+    })
+    $('#myModal4').on('shown.bs.modal', function () {
+        $('#myInput4').trigger('focus')
+    })
+</script>
+<style>
+    .modal-lg {
+        width: 100% !important;
+        max-width: 900px;
+    }
+</style>
+<div class="page-header row no-gutters py-4">
+    <div class="col-6 col-sm-6 text-center text-sm-left mb-0">
+        <span class="text-uppercase page-subtitle">Yeni İçerik Ekle</span>
+    </div>
+
+
+    <div class="col-6 col-sm-6 text-center mb-0 ">
+        <button class="btn btn-primary pull-right" data-toggle="modal" data-target="#exampleModal">Fotoğraf Yükle</button>
+        <button class="btn btn-primary pull-right" data-toggle="modal" data-target="#exampleModal2">Yüklü Fotoğraflar</button>
+
+
+    </div>
+</div>
+<hr />
+<script src="https://cdn.ckeditor.com/4.15.1/full/ckeditor.js"></script>
+<div class="main-content-container container-fluid px-4">
+
+
+    <div class="row">
+        <div class="col-lg-9 col-md-12">
+            <div class="card card-small mb-3">
+                <div class="card-body">
+                    <form class="add-new-post" method="post" enctype="multipart/form-data">
+                        <input class="form-control form-control-lg mb-3" type="text" placeholder="İçerik Başlığı - Max 65 Karakter" name="posttitle" required maxlength="65">
+                        <input class="form-control form-control-lg mb-3" type="text" placeholder="Ön Görünüm Yazısı Max 170 karakter" name="postspottext" required maxlength="170">
+                        <div class="add-new-post__editor mb-1">
+
+                            <textarea name="postcontent"></textarea><br /><br />
+                            <script>
+                                CKEDITOR.replace('postcontent');
+                            </script>
+                        </div>
+
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-12">
+            <div class='card card-small mb-3'>
+                <div class="card-header border-bottom">
+                    <h6 class="m-0">Detaylar ve Fotoğraf</h6>
+                </div>
+                <div class='card-body p-0'>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item p-3">
+
+
+
+                            <span class="d-flex mb-2">
+                                <i class="material-icons mr-1">border_color</i>
+                                <strong class="mr-1">Yazar </strong>
+
+
+                                @Html.DropDownListFor(m => m.userid, (List<SelectListItem>)ViewBag.users, new { @class = "ml-auto" })
+                            </span>
+
+                            <span class="d-flex mb-2">
+                                <i class="material-icons mr-1">flag</i>
+                                <strong class="mr-1">Durum </strong>
+                                <select class="ml-auto" name="isaktif">
+                                    <option value="1">Aktif</option>
+                                    <option value="2">Pasif</option>
+                                </select>
+                            </span>
+                            <span class="d-flex mb-2">
+                                <input type="checkbox" value="true" name="postshowroom"/>
+                                <strong class="mr-1" style="margin-left:5px;"> Vitrinde Göster </strong>
+                                 
+                            </span>
+                            <span class="d-flex mb-2">
+                                <div class="row">
+                                    <div class="col-lg-6">
+                                        <strong class="mr-1">İçerik Fotoğrafı<br /> ( 695 x 460 ) </strong>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <strong class="ml-1">
+                                            <input type="file" name="postphoto" required />
+                                        </strong>
+                                    </div>
+                                </div>
+                            </span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class='card card-small mb-3'>
+                <div class="card-header border-bottom">
+                    <h6 class="m-0">Kategori</h6>
+                </div>
+                <div class='card-body p-0'>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item p-3">
+                            <span class="d-flex mb-2">
+                                <i class="material-icons mr-1">storage</i>
+                                <strong class="mr-1">Kategori </strong>
+                                @Html.DropDownListFor(m => m.categoryid, (List<SelectListItem>)ViewBag.categories, new { @class = "ml-auto" })
+                            </span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class='card card-small mb-3'>
+                <div class="card-header border-bottom">
+                    <h6 class="m-0">Tarih</h6>
+                </div>
+                <div class='card-body p-0'>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item p-3">
+
+
+                            <span class="d-flex mb-2">
+                                <i class="material-icons mr-1">calendar_today</i>
+                                <strong class="mr-1">Yayınlanma Zamanı </strong>
+                                <input type="text" id="datepicker" name="releasetime" required="required" class="ml-auto"><br />
+                            </span>
+
+                        </li>
+                        <li class="list-group-item d-flex px-3">
+
+                            <button class="btn btn-sm btn-accent ml-auto">
+                                <i class="material-icons">file_copy</i> Yayınla
+                            </button>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            </form>
+        </div>
+    </div>
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.0/themes/base/jquery-ui.css">
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.js"></script>
+    
+</div>
+
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <form action="@Url.Action("AddUpload", "Contentdetail")" method="post" enctype="multipart/form-data" class="form-group">
+                <div class="modal-header">
+                    <h5 class="modal-title text-center" id="exampleModalLabel">Fotoğraf Yükle</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <input type="text" name="uploadname" placeholder="Fotoğraf Adı" required class="form-control" /><br />
+                    <input type="file" name="uploadurl" required/>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Kapat</button>
+                    <input type="submit" class="btn btn-primary" value="Yükle" />
+                </div>
+            </form>
+
+        </div>
+    </div>
+</div>
+@*Yeni Kategori*@
+<div class="modal fade" id="exampleModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+
+            @{Html.RenderAction("Uploaded", "AdminPartial");}
+        </div>
+    </div>
+</div>
+
+<script>
+    function copyURI(evt) {
+        evt.preventDefault();
+        navigator.clipboard.writeText(evt.target.getAttribute('href')).then(() => {
+            alert("Fotoğraf Linki Kopyalandı !");
+        }, () => {
+            /* clipboard write failed */
+        });
+    }
+
+    $(function () {
+        var dateNow = new Date();
+
+        $("#datepicker").datepicker({
+            dateFormat: "yy-mm-dd",
+        }).datepicker('setDate', new Date());
+        ;
+    });
+
+    
+</script>

@@ -1,0 +1,26 @@
+﻿@model NavigaMagazin.Models.Entity.CategoryTable
+
+<form action="@Url.Action("CategoryAdd", "AdminPartial")" method="post" enctype="multipart/form-data" class="form-group">
+    <div class="modal-header">
+        <h5 class="modal-title text-center" id="exampleModalLabel">Yeni Kategori</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <input type="text" name="categoryname" placeholder="Kategori Adı" required class="form-control" maxlength="25" /><br />       
+        <div class="row">
+            <div class="col-lg-4">
+                <label>Kategori Menüsü</label>
+            </div>
+            <div class="col-lg-8">
+                @Html.DropDownListFor(m => m.menuid, (List<SelectListItem>)ViewBag.menus, new { @class = "form-control" })
+            </div>
+        </div>   
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Kapat</button>
+        <input type="submit" class="btn btn-primary" value="Ekle" />
+    </div>
+</form>
+

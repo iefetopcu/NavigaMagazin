@@ -1,0 +1,23 @@
+﻿@using NavigaMagazin.Models.Entity
+@foreach (var populernews in Model)
+{
+
+    <div class="col-sm-6 main-post-inner">
+        <article>
+            <figure>
+                <a href="@Url.Action("Oku","Home", new { url = populernews.url })"><img src="@populernews.postphoto" height="242" width="345" alt="@populernews.posttitle" class="img-responsive"></a>
+                <span class="post-category">@populernews.CategoryTable.categoryname</span>
+            </figure>
+            <div class="post-info">
+                <h3><a href="@Url.Action("Oku","Home", new { url = populernews.url })">@populernews.posttitle</a></h3>
+                <ul class="authar-info">
+                    <li><i class="ti-timer"></i>@populernews.releasetime.ToString("dd.MM.yyyy")</li>
+                    <li class="like"><i class="ti-thumb-up"></i>@populernews.postlike</li>
+                </ul>
+                <p>@populernews.postspottext</p>
+            </div>
+        </article>
+
+    </div>
+
+}

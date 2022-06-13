@@ -1,0 +1,5 @@
+﻿@model NavigaMagazin.Models.Entity.AdvertisingTable
+@if (Model != null)
+{
+    <a href="@Url.Action("Admeter","Home", new { id = Model.id })"><img src="@Model.advertisingphoto" class="img-responsive" alt="@Model.advertisingname" style="width:100%!important;"></a>
+}

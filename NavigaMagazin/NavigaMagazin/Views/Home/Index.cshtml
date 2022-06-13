@@ -1,0 +1,449 @@
+﻿@{
+    ViewBag.Title = "Anasayfa";
+    ViewBag.Description = "Naviga Magazin Anasayfa";
+}
+<!-- SLIDER -->
+<section class="slider-inner">
+    <div class="container">
+        <div class="row thm-margin">
+
+            <div class="col-xs-12 col-sm-6 col-md-6 thm-padding">
+                <div class="slider-wrapper">
+                    <div id="owl-slider" class="owl-carousel owl-theme">
+                        <!-- Slider item one -->
+                        @*Partial Slider*@
+                        @{Html.RenderAction("Slider", "Partial");}
+
+                        <!-- /.Slider item one -->
+                        <!-- Slider item two -->
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="col-xs-12 col-sm-3 col-md-3 thm-padding">
+                <div class="row slider-right-post thm-margin">
+                    @*Reklam*@
+                    <div class="col-xs-6 col-sm-12 col-md-12 thm-padding">
+                        @{Html.RenderAction("Sliderfirstad", "Partial");}
+                    </div>
+                    @*Random son postlardan*@
+                    <div class="col-xs-6 col-sm-12 col-md-12 thm-padding">
+                        @{Html.RenderAction("Sliderfirstpost", "Partial");}
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-3 col-md-3 thm-padding">
+                <div class="row slider-right-post thm-margin">
+                    @*Random son postlardan*@
+                    <div class="col-xs-6 col-sm-12 col-md-12 thm-padding">
+                        @{Html.RenderAction("Slidersecondpost", "Partial");}
+                    </div>
+
+                    @*Reklam*@
+                    <div class="col-xs-6 col-sm-12 col-md-12 thm-padding">
+                        @{Html.RenderAction("Slidersecondad", "Partial");}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<div class="container">
+    <div class="row row-m">
+        <!-- START MAIN CONTENT -->
+        <div class="col-sm-12 col-p main-content">
+            <div class="theiaStickySidebar">
+                <!-- START POST CATEGORY STYLE ONE (Popular news) -->
+                <div class="post-inner">
+                    <!--post header-->
+                    <div class="post-head">
+                        <h2 class="title text-center"><strong>Vitrin</strong></h2>
+                    </div>
+                    <!-- post body -->
+                    <div class="post-body">
+                        <div class="post-slider owl-carousel owl-theme">
+                            <!-- item one -->
+                            <div class="item">
+                                <div class="row">
+                                    @{Html.RenderAction("Showroom", "Partial");}
+                                </div>
+                            </div>
+                            <!-- item two -->
+                        </div>
+                    </div>
+                    <!-- Post footer -->
+                </div>
+                <!-- END OF /. POST CATEGORY STYLE ONE (Popular news) -->
+                <!-- START REKLAM -->
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="row row-m">
+        <!-- START MAIN CONTENT -->
+        <div class="col-sm-8 col-p main-content">
+            <div class="theiaStickySidebar">
+                <!-- START POST CATEGORY STYLE ONE (Popular news) -->
+                <div class="post-inner">
+                    <!--post header-->
+                    <div class="post-head">
+                        <h2 class="title"><strong>Popüler</strong> Gönderiler</h2>
+                        <div class="filter-nav">
+
+                        </div>
+                    </div>
+                    <!-- post body -->
+                    <div class="post-body">
+                        <div class="post-slider owl-carousel owl-theme">
+                            <!-- item one -->
+                            <div class="item">
+                                <div class="row">
+
+                                    @{Html.RenderAction("PopularNews", "Partial");}
+                                </div>
+                            </div>
+                            <!-- item two -->
+
+                        </div>
+                    </div>
+                    <!-- Post footer -->
+                    <div class="post-footer">
+                        <div class="row thm-margin">
+                            <div class="col-xs-12 col-sm-8 col-md-9 thm-padding">
+
+                            </div>
+                            <div class="hidden-xs col-sm-4 col-md-3 thm-padding">
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- END OF /. POST CATEGORY STYLE ONE (Popular news) -->
+                <!-- START REKLAM -->
+                <div class="add-inner">
+                    @{Html.RenderAction("ad728x90", "Partial");}
+                </div>
+                <!-- END OF /. ADVERTISEMENT -->
+                <!-- YELKENLİ  -->
+                <div class="post-inner post-inner-2">
+                    <!--post header-->
+                    <div class="post-head">
+                        <h2 class="title"><strong>YELKENLİ</strong></h2>
+                        <div class="filter-nav">
+                        </div>
+                    </div>
+                    <!-- Motoryat -->
+                    <div class="post-body">
+                        <div class="post-slider owl-carousel owl-theme">
+                            <div class="item">
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <div class="news-grid-2">
+                                            <div class="row row-margin">
+                                                @{Html.RenderAction("YelkenliNews", "Partial");}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- footer post -->
+                    <div class="post-footer">
+                        <div class="row thm-margin">
+                            <div class="col-xs-12 col-sm-8 col-md-9 thm-padding">
+
+                            </div>
+                            <div class="hidden-xs col-sm-4 col-md-3 thm-padding">
+                                <a href="@Url.Action("Yelkenli", "Home")" class="more-btn">Tümünü Gör...</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- MOTORYAT  -->
+                <div class="post-inner post-inner-2">
+                    <!--post header-->
+                    <div class="post-head">
+                        <h2 class="title"><strong>MOTORYAT</strong></h2>
+                        <div class="filter-nav">
+                        </div>
+                    </div>
+                    <!-- Motoryat -->
+                    <div class="post-body">
+                        <div class="post-slider owl-carousel owl-theme">
+                            <div class="item">
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <div class="news-grid-2">
+                                            <div class="row row-margin">
+                                                @{Html.RenderAction("MotoryatNews", "Partial");}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- footer post -->
+                    <div class="post-footer">
+                        <div class="row thm-margin">
+                            <div class="col-xs-12 col-sm-8 col-md-9 thm-padding">
+                            </div>
+                            <div class="hidden-xs col-sm-4 col-md-3 thm-padding">
+                                <a href="@Url.Action("Motoryat", "Home")" class="more-btn">Tümünü Gör...</a>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- RİB  -->
+                <div class="post-inner post-inner-2">
+                    <!--post header-->
+                    <div class="post-head">
+                        <h2 class="title"><strong>RİB</strong></h2>
+                        <div class="filter-nav">
+                        </div>
+                    </div>
+                    <!-- Motoryat -->
+                    <div class="post-body">
+                        <div class="post-slider owl-carousel owl-theme">
+                            <div class="item">
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <div class="news-grid-2">
+                                            <div class="row row-margin">
+                                                @{Html.RenderAction("RibNews", "Partial");}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- footer post -->
+                    <div class="post-footer">
+                        <div class="row thm-margin">
+                            <div class="col-xs-12 col-sm-8 col-md-9 thm-padding">
+
+                            </div>
+                            <div class="hidden-xs col-sm-4 col-md-3 thm-padding">
+                                <a href="@Url.Action("Rib", "Home")" class="more-btn">Tümünü Gör...</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- TEKNİK  -->
+                <div class="post-inner post-inner-2">
+                    <!--post header-->
+                    <div class="post-head">
+                        <h2 class="title"><strong>TEKNİK</strong></h2>
+                        <div class="filter-nav">
+                        </div>
+                    </div>
+                    <!-- Motoryat -->
+                    <div class="post-body">
+                        <div class="post-slider owl-carousel owl-theme">
+                            <div class="item">
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <div class="news-grid-2">
+                                            <div class="row row-margin">
+                                                @{Html.RenderAction("TeknikNews", "Partial");}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- footer post -->
+                    <div class="post-footer">
+                        <div class="row thm-margin">
+                            <div class="col-xs-12 col-sm-8 col-md-9 thm-padding">
+
+                            </div>
+                            <div class="hidden-xs col-sm-4 col-md-3 thm-padding">
+                                <a href="@Url.Action("Teknik", "Home")" class="more-btn">Tümünü Gör...</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- ÜRÜNLER  -->
+                <div class="post-inner post-inner-2">
+                    <!--post header-->
+                    <div class="post-head">
+                        <h2 class="title"><strong>ÜRÜNLER</strong></h2>
+                        <div class="filter-nav">
+                        </div>
+                    </div>
+                    <!-- Motoryat -->
+                    <div class="post-body">
+                        <div class="post-slider owl-carousel owl-theme">
+                            <div class="item">
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <div class="news-grid-2">
+                                            <div class="row row-margin">
+                                                @{Html.RenderAction("UrunlerNews", "Partial");}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- footer post -->
+                    <div class="post-footer">
+                        <div class="row thm-margin">
+                            <div class="col-xs-12 col-sm-8 col-md-9 thm-padding">
+
+                            </div>
+                            <div class="hidden-xs col-sm-4 col-md-3 thm-padding">
+                                <a href="@Url.Action("Urunler", "Home")" class="more-btn">Tümünü Gör...</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- HABERLER  -->
+                <div class="post-inner post-inner-2">
+                    <!--post header-->
+                    <div class="post-head">
+                        <h2 class="title"><strong>HABERLER</strong></h2>
+                        <div class="filter-nav">
+                        </div>
+                    </div>
+                    <!-- Motoryat -->
+                    <div class="post-body">
+                        <div class="post-slider owl-carousel owl-theme">
+                            <div class="item">
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <div class="news-grid-2">
+                                            <div class="row row-margin">
+                                                @{Html.RenderAction("HaberlerNews", "Partial");}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- footer post -->
+                    <div class="post-footer">
+                        <div class="row thm-margin">
+                            <div class="col-xs-12 col-sm-8 col-md-9 thm-padding">
+
+                            </div>
+                            <div class="hidden-xs col-sm-4 col-md-3 thm-padding">
+                                <a href="@Url.Action("Haberler", "Home")" class="more-btn">Tümünü Gör...</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- ROTA  -->
+                <div class="post-inner post-inner-2">
+                    <!--post header-->
+                    <div class="post-head">
+                        <h2 class="title"><strong>ROTA</strong></h2>
+                        <div class="filter-nav">
+                        </div>
+                    </div>
+                    <!-- Motoryat -->
+                    <div class="post-body">
+                        <div class="post-slider owl-carousel owl-theme">
+                            <div class="item">
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <div class="news-grid-2">
+                                            <div class="row row-margin">
+                                                @{Html.RenderAction("RotaNews", "Partial");}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- footer post -->
+                    <div class="post-footer">
+                        <div class="row thm-margin">
+                            <div class="col-xs-12 col-sm-8 col-md-9 thm-padding">
+
+                            </div>
+                            <div class="hidden-xs col-sm-4 col-md-3 thm-padding">
+                                <a href="@Url.Action("Rota", "Home")" class="more-btn">Tümünü Gör...</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- KUZİNE  -->
+                <div class="post-inner post-inner-2">
+                    <!--post header-->
+                    <div class="post-head">
+                        <h2 class="title"><strong>KUZİNE</strong></h2>
+                        <div class="filter-nav">
+                        </div>
+                    </div>
+                    <!-- Motoryat -->
+                    <div class="post-body">
+                        <div class="post-slider owl-carousel owl-theme">
+                            <div class="item">
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <div class="news-grid-2">
+                                            <div class="row row-margin">
+                                                @{Html.RenderAction("KuzineNews", "Partial");}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- footer post -->
+                    <div class="post-footer">
+                        <div class="row thm-margin">
+                            <div class="col-xs-12 col-sm-8 col-md-9 thm-padding">
+
+                            </div>
+                            <div class="hidden-xs col-sm-4 col-md-3 thm-padding">
+                                <a href="@Url.Action("Kuzine", "Home")" class="more-btn">Tümünü Gör...</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--  END OF /. POST CATEGORY STYLE TWO (Travel news) -->
+                <div class="add-inner ">
+                    @{Html.RenderAction("ad728x90", "Partial");}
+                </div>
+            </div>
+        </div>
+        <!-- END OF /. MAIN CONTENT -->
+        <!-- START SIDE CONTENT -->
+        @{Html.RenderAction("Sidecontent", "Partial");}
+        <!-- END OF /. SIDE CONTENT -->
+    </div>
+</div>
+<div class="container">
+    <div class="row row-m">
+        <h2 class="title text-center"><strong>Ay Takvimi</strong></h2>
+        @{Html.RenderAction("MoonCalendar", "Partial");}
+    </div>
+</div>
+
+ 
+<!-- START YOUTUBE VIDEO -->
+@*@{Html.RenderAction("NavigaTV", "Partial");}*@
+<!-- END OF /. YOUTUBE VIDEO -->
+@*<div class="container">
+        <div class="col-lg-8">
+            @{Html.RenderAction("ad728x90", "Partial");}
+        </div>
+        <div class="col-lg-4">
+            @{Html.RenderAction("ad320x270", "Partial");}
+        </div>
+
+    </div>*@
+

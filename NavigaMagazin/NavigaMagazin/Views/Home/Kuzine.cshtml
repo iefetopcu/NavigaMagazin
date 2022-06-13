@@ -1,0 +1,73 @@
+﻿@using NavigaMagazin.Models.Entity
+@using PagedList
+@using PagedList.Mvc
+@model PagedList.IPagedList<ContentTable>
+@{
+    ViewBag.Title = "Kuzine";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="page-title">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-sm-6 col-md-6">
+                <h1><strong>Kuzine</strong></h1>
+            </div>
+            <div class="col-xs-12 col-sm-6 col-md-6">
+                <ol class="breadcrumb">
+                    <li><a href="@Url.Action("Index", "Home")">Anasayfa</a></li>
+                    <li class="active"><a href="@Url.Action("Kuzine", "Home")">Kuzine</a></li>
+                </ol>
+            </div>
+        </div>
+    </div>
+</div>
+<main class="page_main_wrapper">
+
+    <div class="container">
+        <div class="row row-m">
+            <!-- START MAIN CONTENT -->
+            <div class="col-sm-8 col-p  main-content">
+                <div class="theiaStickySidebar">
+                    <div class="post-inner categoty-style-1">
+                        <!-- post body -->
+                        <div class="post-body">
+                            <div class="row row-m">
+                                @foreach (var catlist in Model)
+                                {
+                                    <div class="col-sm-6 col-p">
+                                        <article>
+                                            <figure>
+                                                <a href="@Url.Action("Oku","Home", new { url = catlist.url })"><img src="@catlist.postphoto" height="242" width="345" alt="@catlist.postlike" class="img-responsive"></a>
+                                                <span class="post-category">@catlist.CategoryTable.categoryname</span>
+                                            </figure>
+                                            <div class="post-info">
+                                                <h3><a href="@Url.Action("Oku","Home", new { url = catlist.url })">@catlist.posttitle</a></h3>
+                                                <ul class="authar-info">
+                                                    <li><i class="ti-timer"></i> @catlist.releasetime.Value.ToString("dd.MM.yyyy")</li>
+                                                    <li><a href="#" class="link"><i class="ti-thumb-up"></i>@catlist.postlike</a></li>
+                                                </ul>
+                                            </div>
+                                        </article>
+                                    </div>
+                                }
+                            </div>
+                        </div>
+                        <!-- Post footer -->
+                        <div class="post-footer">
+                            <div class="row thm-margin">
+                                <div class="col-xs-12 col-sm-12 col-md-12 thm-padding">
+                                    <!-- pagination -->
+                                    @Html.PagedListPager((IPagedList)Model, page => Url.Action("Index", new { page })) <!-- /.pagination -->
+                                </div>
+                            </div>
+                        </div> <!-- /.Post footer-->
+                    </div>
+                </div>
+            </div>
+            <!-- END OF /. MAIN CONTENT -->
+            <!-- START SIDE CONTENT -->
+            @{Html.RenderAction("Sidecontent", "Partial");}
+            <!-- END OF /. SIDE CONTENT -->
+        </div>
+    </div>
+</main>

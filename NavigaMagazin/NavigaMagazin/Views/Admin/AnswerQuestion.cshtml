@@ -1,0 +1,67 @@
+﻿@model NavigaMagazin.Models.Entity.questionTable
+@{
+    ViewBag.Title = "Soru Cevapla";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+<div class="main-content-container container-fluid px-4">
+
+    <div class="page-header row no-gutters py-4">
+        <div class="col-12 col-sm-4 text-center text-sm-left mb-0">
+            <span class="text-uppercase page-subtitle"></span>
+            <h3 class="page-title">Soru Cevapla</h3>
+        </div>
+    </div>
+
+    @using (Html.BeginForm("AnswerQuestion", "Admin", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        <div class="row">
+            <div class="col-lg-9 col-md-12">
+                <div class="card card-small mb-3">
+                    <div class="card-body">
+                        <h4>Soru </h4>
+                        <hr />
+                        <h5>@Model.questiontitle</h5>
+                        <p style="color:#622c09">@Model.questioncontent</p>
+                        <br /><hr />
+                        <h4>Cevap </h4>
+                        <div class="add-new-post__editor mb-1">
+                            <textarea name="questionanswer" class="form-control">@Model.questionanswer</textarea><br /><br />
+                          
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-12">
+                <div class='card card-small mb-3'>
+                    <div class="card-header border-bottom">
+                        <h6 class="m-0">Detaylar</h6>
+                    </div>
+                    <div class='card-body p-0'>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item p-3">
+                                <span class="d-flex mb-2">
+                                    <i class="material-icons mr-1">border_color</i>
+                                    <strong class="mr-1">Yazar </strong>
+                                    @Html.DropDownListFor(m => m.expertid, (List<SelectListItem>)ViewBag.users, new { @class = "ml-auto" })
+                                </span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class='card-body p-0'>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item d-flex px-3">
+
+                                <button class="btn btn-sm btn-accent ml-auto">
+                                    <i class="material-icons">file_copy</i> Cevapla
+                                </button>
+                            </li>
+                        </ul>
+                    </div>
+                </div>                             
+            </div>
+        </div>
+    }
+</div>
+
+

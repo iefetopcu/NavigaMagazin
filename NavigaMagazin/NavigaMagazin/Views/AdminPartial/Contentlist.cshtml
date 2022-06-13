@@ -1,0 +1,9 @@
+﻿@using NavigaMagazin.Models.Entity
+
+@foreach (var contentlist in Model)
+{
+    <li class="list-group-item d-flex px-3">
+        <span class="text-semibold text-fiord-blue">@contentlist.posttitle</span>
+        <span class="ml-auto text-right text-semibold text-reagent-gray">@contentlist.createtime.ToString("dd.MM.yyyy")</span>
+    </li>
+}

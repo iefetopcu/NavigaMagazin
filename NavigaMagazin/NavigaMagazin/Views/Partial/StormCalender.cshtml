@@ -1,0 +1,15 @@
+﻿@using NavigaMagazin.Models.Entity
+<div class="post-head" style="        background-color: #002D72;">
+    <h1 class="title" style="color:white;"><i class="fas fa-poo-storm"></i> <strong>Fırtına </strong>Takvimi </h1>
+    <div class="filter-nav">
+
+    </div>
+</div>
+<ul class="list-group list-group-flush">
+    @foreach (var item in Model)
+    {
+        
+        <li class="list-group-item">@item.stormname</li>
+    }
+
+</ul>

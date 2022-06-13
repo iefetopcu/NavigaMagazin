@@ -1,0 +1,23 @@
+﻿@using NavigaMagazin.Models.Entity
+@foreach (var teknik in Model)
+{
+
+    <div class="col-xs-6 col-sm-6 col-md-6 col-padding">
+        <div class="grid-item">
+            <div class="grid-item-img">
+                <a href="@Url.Action("Oku","Home", new { url = teknik.url })">
+                    <img src="@teknik.postphoto" class="img-responsive" alt="@teknik.posttitle">
+                    @*<div class="link-icon"><i class="fa fa-camera"></i></div>*@
+                </a>
+            </div>
+            <h5><a href="@Url.Action("Oku","Home", new { url = teknik.url })" class="title">@teknik.posttitle</a></h5>
+            <ul class="authar-info">
+                <li>@teknik.releasetime.ToString("dd.MM.yyyy")</li>
+                <li class="like hidden-sm">@teknik.postlike</li>
+            </ul>
+            <p>@teknik.postspottext</p>
+        </div>
+    </div>
+
+}
+

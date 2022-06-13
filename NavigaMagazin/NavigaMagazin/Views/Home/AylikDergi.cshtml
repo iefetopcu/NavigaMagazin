@@ -1,0 +1,62 @@
+﻿@model NavigaMagazin.Models.Entity.magazineTable
+@{
+    ViewBag.Title = "AylikDergi";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container">
+    <div class="row row-m">
+        <!-- START MAIN CONTENT -->
+        <div class="col-sm-8 col-p  main-content">
+            <div class="theiaStickySidebar">
+                <div class="post_details_inner">
+                    <div class="post_details_block details_block3">
+                        <div class="post-header">
+                            <ul class="td-category">
+                                <li><a class="post-category" href="#">Aylık Dergi</a></li>
+
+                            </ul>
+                            <h2 style="padding-bottom:20px;">@Model.magazinetitle</h2>
+
+                        </div>
+                        <figure class="social-icon">
+                            <img src="@Model.coverphoto" class="img-responsive" alt="@Model.magazinetitle" />
+
+                            <div>
+                                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                                <a href="#"><i class="fab fa-twitter"></i></a>
+                                <a href="#"><i class="fab fa-instagram"></i></a>
+                                <a href="#" class="hidden-xs"><i class="fab fa-linkedin-in"></i></a>
+                                <a href="#" class="hidden-xs"><i class="fab fa-pinterest-p"></i></a>
+                            </div>
+                        </figure>
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <ul class="authar-info">
+                                   
+                                    <li class="date">@Model.magazinetime.Value.ToString("dd.MM.yyyy")</li>
+                                    @*<li class="view">@Model.postview Görüntülenme</li>
+                                        <li class="view">@Model.postlike <i class="fa fa-thumbs-up" aria-hidden="true"></i></li>
+                                        <li class="view">@Model.postdislike <i class="fa fa-thumbs-down" aria-hidden="true"></i></li>*@
+                                </ul>
+                            </div>
+
+                        </div>
+                        <br />
+                        
+                        <p>@Html.Raw(Model.magazinecontent)</p>
+
+
+
+
+
+                    </div>
+                </div>
+                <!-- END OF /. MAIN CONTENT -->
+                <!-- START SIDE CONTENT -->
+                <!-- END OF /. SIDE CONTENT -->
+            </div>
+        </div>
+        @{Html.RenderAction("Sidecontent", "Partial");}
+    </div>
+</div>

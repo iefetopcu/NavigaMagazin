@@ -1,0 +1,12 @@
+﻿@using NavigaMagazin.Models.Entity
+@foreach (var questionlist in Model)
+{
+    <li class="list-group-item d-flex px-3">
+        <a href="@Url.Action("AnswerQuestion","Admin", new { id = questionlist.id })"><span class="text-semibold text-fiord-blue">@questionlist.questiontitle</span></a>
+        <span class="ml-auto text-right text-semibold text-reagent-gray">           
+                <span style="color:#0c6f19">@questionlist.questiontime.ToString("dd.MM.yyyy")</span>
+        </span>
+    </li>
+}
+
+

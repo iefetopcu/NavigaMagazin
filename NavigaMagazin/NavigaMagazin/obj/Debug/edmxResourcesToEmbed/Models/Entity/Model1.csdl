@@ -1,0 +1,392 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="navigaModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="AdvertisingTable">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="advertisingname" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="advertisinglink" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="advertisingphoto" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="advertisingstart" Type="DateTime" Precision="3" />
+    <Property Name="advertisingend" Type="DateTime" Precision="3" />
+    <Property Name="createtime" Type="DateTime" Precision="3" />
+    <Property Name="updatetime" Type="DateTime" Precision="3" />
+    <Property Name="advertising260x230" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="advertising320x270" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="advertising320x540" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="advertising728x90banner" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="advertising728x90" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="isaktif" Type="Int64" />
+    <Property Name="fixedad" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="numberofclicks" Type="Int64" />
+    <Property Name="numberofview" Type="Int64" />
+  </EntityType>
+  <EntityType Name="calendarTable">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="calendartitle" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="calendercontent" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="calenderlocation" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="creationtime" Type="DateTime" Precision="3" />
+    <Property Name="url" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="calendestartrdate" Type="DateTime" Precision="3" />
+    <Property Name="calenderenddate" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="CategoryTable">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="categoryname" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="menuid" Type="Int64" />
+    <NavigationProperty Name="MenuTable" Relationship="Self.FK_CategoryTable_MenuTable" FromRole="CategoryTable" ToRole="MenuTable" />
+    <NavigationProperty Name="ContentTables" Relationship="Self.FK_ContentTable_CategoryTable" FromRole="CategoryTable" ToRole="ContentTable" />
+  </EntityType>
+  <EntityType Name="CommentTable">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="userid" Type="Int64" />
+    <Property Name="postid" Type="Int64" />
+    <Property Name="commenttitle" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="commentcontent" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="commenttime" Type="DateTime" Precision="3" />
+    <Property Name="approved" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="ContentTable" Relationship="Self.FK_CommentTable_ContentTable" FromRole="CommentTable" ToRole="ContentTable" />
+    <NavigationProperty Name="UserTable" Relationship="Self.FK_CommentTable_UserTable" FromRole="CommentTable" ToRole="UserTable" />
+  </EntityType>
+  <EntityType Name="ContentTable">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="categoryid" Type="Int64" />
+    <Property Name="userid" Type="Int64" />
+    <Property Name="posttitle" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="postcontent" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="postspottext" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="postphoto" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="url" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="isaktif" Type="Int64" />
+    <Property Name="postview" Type="Int64" />
+    <Property Name="postlike" Type="Int64" />
+    <Property Name="postdislike" Type="Int64" />
+    <Property Name="createtime" Type="DateTime" Precision="3" />
+    <Property Name="updatetime" Type="DateTime" Precision="3" />
+    <Property Name="releasetime" Type="DateTime" Precision="3" />
+    <Property Name="approved" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="postshowroom" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="CategoryTable" Relationship="Self.FK_ContentTable_CategoryTable" FromRole="ContentTable" ToRole="CategoryTable" />
+    <NavigationProperty Name="CommentTables" Relationship="Self.FK_CommentTable_ContentTable" FromRole="ContentTable" ToRole="CommentTable" />
+    <NavigationProperty Name="UserTable" Relationship="Self.FK_ContentTable_UserTable" FromRole="ContentTable" ToRole="UserTable" />
+  </EntityType>
+  <EntityType Name="EbultenTable">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ebultenmail" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="registertime" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="magazineTable">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="coverphoto" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="magazinetitle" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="magazinecontent" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="magazinetime" Type="DateTime" Precision="3" />
+    <Property Name="creationtime" Type="DateTime" Precision="3" />
+    <Property Name="url" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="ManualLog">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="logexp" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="whodidit" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="processingtime" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="MenuTable">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="menuname" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="CategoryTables" Relationship="Self.FK_CategoryTable_MenuTable" FromRole="MenuTable" ToRole="CategoryTable" />
+  </EntityType>
+  <EntityType Name="MessageTable">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="messagefullname" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="messageemail" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="messagesubject" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="messagedescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="messagetime" Type="DateTime" Precision="3" />
+    <Property Name="messagestatu" Type="Int32" />
+  </EntityType>
+  <EntityType Name="modalTable">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="modalphoto" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="modallink" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="modalactive" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="moonCalendar">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="moonPhotoUrl" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="moonTime" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="questionTable">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="userid" Type="Int64" />
+    <Property Name="expertid" Type="Int64" />
+    <Property Name="questiontitle" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="questioncontent" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="questionanswer" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="questiontime" Type="DateTime" Precision="3" />
+    <Property Name="isaktif" Type="Int32" />
+    <NavigationProperty Name="UserTable" Relationship="Self.FK_questionTable_UserTable" FromRole="questionTable" ToRole="UserTable" />
+    <NavigationProperty Name="UserTable1" Relationship="Self.FK_questionTable_UserTable1" FromRole="questionTable" ToRole="UserTable" />
+  </EntityType>
+  <EntityType Name="stormTable">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="stormname" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="releasetime" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="sysdiagram">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="UploadTable">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="uploadname" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="uploadurl" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="uploadlink" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="UserRoleTable">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="rolename" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="UserTables" Relationship="Self.FK_UserTable_UserRoleTable" FromRole="UserRoleTable" ToRole="UserTable" />
+  </EntityType>
+  <EntityType Name="UserTable">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="username" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="usersurname" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="useremail" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="userphoto" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="userpassword" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="userroleid" Type="Int64" />
+    <Property Name="isaktif" Type="Int64" />
+    <Property Name="creationtime" Type="DateTime" Precision="3" />
+    <Property Name="updatetime" Type="DateTime" Precision="3" />
+    <Property Name="userfacebook" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="usertwitter" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="useryoutube" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="userlinkedin" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="approved" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="CommentTables" Relationship="Self.FK_CommentTable_UserTable" FromRole="UserTable" ToRole="CommentTable" />
+    <NavigationProperty Name="ContentTables" Relationship="Self.FK_ContentTable_UserTable" FromRole="UserTable" ToRole="ContentTable" />
+    <NavigationProperty Name="questionTables" Relationship="Self.FK_questionTable_UserTable" FromRole="UserTable" ToRole="questionTable" />
+    <NavigationProperty Name="questionTables1" Relationship="Self.FK_questionTable_UserTable1" FromRole="UserTable" ToRole="questionTable" />
+    <NavigationProperty Name="UserRoleTable" Relationship="Self.FK_UserTable_UserRoleTable" FromRole="UserTable" ToRole="UserRoleTable" />
+  </EntityType>
+  <EntityType Name="videoTable">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="videotitle" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="videodescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="videolink" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="url" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="releasetime" Type="DateTime" Precision="3" />
+    <Property Name="createtime" Type="DateTime" Precision="3" />
+    <Property Name="updatetime" Type="DateTime" Precision="3" />
+    <Property Name="isaktif" Type="Int32" />
+    <Property Name="showroom" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <Association Name="FK_CategoryTable_MenuTable">
+    <End Role="MenuTable" Type="Self.MenuTable" Multiplicity="0..1" />
+    <End Role="CategoryTable" Type="Self.CategoryTable" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MenuTable">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="CategoryTable">
+        <PropertyRef Name="menuid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ContentTable_CategoryTable">
+    <End Role="CategoryTable" Type="Self.CategoryTable" Multiplicity="0..1" />
+    <End Role="ContentTable" Type="Self.ContentTable" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CategoryTable">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="ContentTable">
+        <PropertyRef Name="categoryid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CommentTable_ContentTable">
+    <End Role="ContentTable" Type="Self.ContentTable" Multiplicity="0..1" />
+    <End Role="CommentTable" Type="Self.CommentTable" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ContentTable">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="CommentTable">
+        <PropertyRef Name="postid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CommentTable_UserTable">
+    <End Role="UserTable" Type="Self.UserTable" Multiplicity="0..1" />
+    <End Role="CommentTable" Type="Self.CommentTable" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserTable">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="CommentTable">
+        <PropertyRef Name="userid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ContentTable_UserTable">
+    <End Role="UserTable" Type="Self.UserTable" Multiplicity="0..1" />
+    <End Role="ContentTable" Type="Self.ContentTable" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserTable">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="ContentTable">
+        <PropertyRef Name="userid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_questionTable_UserTable">
+    <End Role="UserTable" Type="Self.UserTable" Multiplicity="0..1" />
+    <End Role="questionTable" Type="Self.questionTable" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserTable">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="questionTable">
+        <PropertyRef Name="userid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_questionTable_UserTable1">
+    <End Role="UserTable" Type="Self.UserTable" Multiplicity="0..1" />
+    <End Role="questionTable" Type="Self.questionTable" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserTable">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="questionTable">
+        <PropertyRef Name="expertid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UserTable_UserRoleTable">
+    <End Role="UserRoleTable" Type="Self.UserRoleTable" Multiplicity="0..1" />
+    <End Role="UserTable" Type="Self.UserTable" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserRoleTable">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="UserTable">
+        <PropertyRef Name="userroleid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="navigaEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="AdvertisingTables" EntityType="Self.AdvertisingTable" />
+    <EntitySet Name="calendarTables" EntityType="Self.calendarTable" />
+    <EntitySet Name="CategoryTables" EntityType="Self.CategoryTable" />
+    <EntitySet Name="CommentTables" EntityType="Self.CommentTable" />
+    <EntitySet Name="ContentTables" EntityType="Self.ContentTable" />
+    <EntitySet Name="EbultenTables" EntityType="Self.EbultenTable" />
+    <EntitySet Name="magazineTables" EntityType="Self.magazineTable" />
+    <EntitySet Name="ManualLogs" EntityType="Self.ManualLog" />
+    <EntitySet Name="MenuTables" EntityType="Self.MenuTable" />
+    <EntitySet Name="MessageTables" EntityType="Self.MessageTable" />
+    <EntitySet Name="modalTables" EntityType="Self.modalTable" />
+    <EntitySet Name="moonCalendars" EntityType="Self.moonCalendar" />
+    <EntitySet Name="questionTables" EntityType="Self.questionTable" />
+    <EntitySet Name="stormTables" EntityType="Self.stormTable" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+    <EntitySet Name="UploadTables" EntityType="Self.UploadTable" />
+    <EntitySet Name="UserRoleTables" EntityType="Self.UserRoleTable" />
+    <EntitySet Name="UserTables" EntityType="Self.UserTable" />
+    <EntitySet Name="videoTables" EntityType="Self.videoTable" />
+    <AssociationSet Name="FK_CategoryTable_MenuTable" Association="Self.FK_CategoryTable_MenuTable">
+      <End Role="MenuTable" EntitySet="MenuTables" />
+      <End Role="CategoryTable" EntitySet="CategoryTables" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ContentTable_CategoryTable" Association="Self.FK_ContentTable_CategoryTable">
+      <End Role="CategoryTable" EntitySet="CategoryTables" />
+      <End Role="ContentTable" EntitySet="ContentTables" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CommentTable_ContentTable" Association="Self.FK_CommentTable_ContentTable">
+      <End Role="ContentTable" EntitySet="ContentTables" />
+      <End Role="CommentTable" EntitySet="CommentTables" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CommentTable_UserTable" Association="Self.FK_CommentTable_UserTable">
+      <End Role="UserTable" EntitySet="UserTables" />
+      <End Role="CommentTable" EntitySet="CommentTables" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ContentTable_UserTable" Association="Self.FK_ContentTable_UserTable">
+      <End Role="UserTable" EntitySet="UserTables" />
+      <End Role="ContentTable" EntitySet="ContentTables" />
+    </AssociationSet>
+    <AssociationSet Name="FK_questionTable_UserTable" Association="Self.FK_questionTable_UserTable">
+      <End Role="UserTable" EntitySet="UserTables" />
+      <End Role="questionTable" EntitySet="questionTables" />
+    </AssociationSet>
+    <AssociationSet Name="FK_questionTable_UserTable1" Association="Self.FK_questionTable_UserTable1">
+      <End Role="UserTable" EntitySet="UserTables" />
+      <End Role="questionTable" EntitySet="questionTables" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UserTable_UserRoleTable" Association="Self.FK_UserTable_UserRoleTable">
+      <End Role="UserRoleTable" EntitySet="UserRoleTables" />
+      <End Role="UserTable" EntitySet="UserTables" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

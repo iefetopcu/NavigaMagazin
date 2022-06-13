@@ -1,0 +1,161 @@
+﻿@model NavigaMagazin.Models.Entity.UserTable
+@{
+    ViewBag.Title = Model.username+@Model.usersurname;
+    ViewBag.Description = "Naviga Magazin Kullanıcı Sayfası";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="page-title">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-sm-6 col-md-6">
+                <h1><strong>Kullanıcı Detayları</strong></h1>
+            </div>
+            <div class="col-xs-12 col-sm-6 col-md-6">
+                <ol class="breadcrumb">
+                    <li><a href="@Url.Action("Index", "Home")">Anasayfa</a></li>
+                    <li class="active"><a href="@Url.Action("ShowUser", "Home" , new {id = Model.id})">@Model.username @Model.usersurname</a></li>
+                </ol>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="container">
+        @if (ViewBag.approval == "ok")
+        {
+            <div class="alert alert-success text-center" role="alert">
+                <h4 class="alert-heading">Başarılı !</h4><br />
+                <p>Profil onayınız bize ulaştı. </p>
+                <p class="mb-0">Profiliniz incelendikten sonra size mail üzerinden bilgi verilecektir.</p>
+            </div>
+        }
+    </div>
+</div>
+<div class="team about-content">
+    <div class="container">
+
+        <div class="row">
+
+            <div class="col-md-3 col-sm-6 col-xs-12">
+                <figure class="member">
+                    <img src="@Model.userphoto" class="img-responsive" alt="Image" style="height:300px;">
+                    @if (Model.approved == "true")
+                    {
+                        <img src="~/Photos/check.png" class="img-responsive" alt="Image" style="height:50px; width:50px; margin-top:-50px; margin-left:10px;">
+                    }
+
+                    <figcaption>
+                        <h4>@Model.username @Model.usersurname</h4>
+                        <small>@Model.UserRoleTable.rolename</small>
+                        <ul>
+                            <li><a href="@Model.userfacebook" target="_blank"><i class="fab fa-facebook-f"></i></a></li>
+                            <li><a href="@Model.usertwitter" target="_blank"><i class="fab fa-twitter"></i></a></li>
+                            <li><a href="@Model.useryoutube" target="_blank"><i class="fab fa-youtube"></i></a></li>
+                            <li><a href="@Model.userlinkedin" target="_blank"><i class="fab fa-linkedin-in"></i></a></li>
+                        </ul>
+                        <br /><br />
+                        <div class="row">
+                            <div class="col-lg-5">
+                                <a href="@Url.Action("ApprovalContent", "Home")" class="btn btn-news">İçerik Yaz</a><br />
+                            </div>
+                            @if (Model.approved != "true")
+                            {
+                                <div class="col-lg-7">
+                                    <a href="@Url.Action("ApprovalRequest", "Home" , new {id = Model.id})" class="btn btn-news">Onaylı Profil Ol</a>
+                                </div>
+                            }
+                        </div>
+                    </figcaption>
+                </figure>
+                <!-- end member -->
+            </div>
+            <div class="col-sm-9 col-p  main-content">
+                <div class="contact_form_inner">
+                    <div class="panel_inner">
+                        <div class="panel_header">
+                            @if (ViewBag.contact == "ok")
+                            {
+                                <div class="alert alert-success text-center" role="alert">
+                                    <h4 class="alert-heading">Başarılı !</h4><br />
+                                    <p>Göndermiş olduğunuz mesaj bize ulaştı </p>
+                                    <p class="mb-0">Sizinle en yakın sürede irtibata geçeceğiz.</p>
+                                </div>
+                            }
+                            <h4><strong>@Model.username  @Model.usersurname </strong> Kullanıcı bilgileri</h4>
+                        </div>
+                        <div class="panel_body">
+                            @using (Html.BeginForm("Kullanici", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                            {
+                                <input type="hidden" value="@Model.id" name="id" />
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+                                            <label for="name">Ad</label>
+                                            @Html.TextBoxFor(m => m.username, new { @class = "form-control form-control-lg mb-3", @maxlength = "65", @required = "required" })
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+                                            <label for="name">Soyad</label>
+                                            @Html.TextBoxFor(m => m.usersurname, new { @class = "form-control form-control-lg mb-3", @maxlength = "65", @required = "required" })
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+                                            <label for="name">E-Mail</label>
+                                            @Html.TextBoxFor(m => m.useremail, new { @class = "form-control form-control-lg mb-3", @maxlength = "65", @type = "email", @required = "required" })
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+                                            <label for="name">Şifre</label>
+                                            @Html.TextBoxFor(m => m.userpassword, new { @class = "form-control form-control-lg mb-3", @maxlength = "65", @type = "password", @minlenght = "8", @required = "required" })
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+                                            <label>Facebook Adresi</label>
+                                            @Html.TextBoxFor(m => m.userfacebook, new { @class = "form-control form-control-lg mb-3" })
+                                            <label>Twitter Adresi</label>
+                                            @Html.TextBoxFor(m => m.usertwitter, new { @class = "form-control form-control-lg mb-3" })
+                                            <label>Youtube Adresi</label>
+                                            @Html.TextBoxFor(m => m.useryoutube, new { @class = "form-control form-control-lg mb-3" })
+                                            <label>Linkedin Adresi</label>
+                                            @Html.TextBoxFor(m => m.userlinkedin, new { @class = "form-control form-control-lg mb-3" })
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+                                            <label for="name">Kullanıcı Fotoğrafı</label><br />
+                                            <input type="file" name="userphoto" />
+                                        </div>
+                                    </div>
+
+
+
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+                                            <button class="btn btn-sm btn-news ml-auto">
+                                                Kaydet
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- end col-12 -->
+        <!-- end col-3 -->
+
+    </div>
+    <!-- end row -->
+
+</div>
+

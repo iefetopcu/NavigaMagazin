@@ -1,0 +1,125 @@
+﻿@using NavigaMagazin.Models.Entity
+@{
+    ViewBag.Title = "Reklam Yönetimi";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+<script>
+    $('#myModal').on('shown.bs.modal', function () {
+        $('#myInput').trigger('focus')
+    })
+
+</script>
+@if (ViewBag.ads == "no")
+{
+    <div class="alert alert-danger text-center" role="alert">
+        <h4 class="alert-heading">Başarısız !</h4><br />
+        <p>Aynı formatta en fazla 2 aktif reklam eklenebilir ! </p>
+
+    </div>
+}
+
+<div class="page-header row no-gutters py-4">
+    <div class="col-6 col-sm-6 text-center text-sm-left mb-0">
+        <span class="text-uppercase page-subtitle">Reklam Yönetimi</span>
+    </div>
+    <div class="col-6 col-sm-6 text-center mb-0 ">
+        <button class="btn btn-primary pull-right" data-toggle="modal" data-target="#exampleModal2">Reklam Ara</button>
+        <button class="btn btn-primary pull-right" data-toggle="modal" data-target="#exampleModal">Yeni Reklam</button>
+    </div>
+</div>
+<div class="page-header row no-gutters py-4">
+    <div class="col-12 col-sm-12 text-center text-sm-left mb-0">
+        <span class="text-uppercase page-subtitle">Aktif Reklamlar</span>
+    </div>
+</div>
+@if (Model.Count == 0)
+{
+
+    <div class="alert alert-danger text-center" role="alert">
+        <h4 class="alert-heading">Aktif Reklam Yok !</h4><br />
+
+
+    </div>
+}
+<div class="row">
+    @foreach (var ads in Model)
+    {
+        <div class="col-lg-3 col-md-6 col-sm-12 mb-4">
+            <div class="card card-small card-post card-post--1" style="border:#00ff21 solid 1px;">
+                <div class="card-post__image" style="background-image: url('@ads.advertisingphoto');">
+                    <a href="@Url.Action("DeleteAd", "Advertisement" , new { id = ads.id })" onclick="return confirm('Bu Reklamı Silmek İstediğinize Emin Misiniz?')">
+                        <i class="material-icons badge badge-pill badge-secondary" style="color:white; padding:10px;">
+                            <i class="fa fa-trash" aria-hidden="true"></i>
+                        </i>
+                    </a>
+                    <p class="card-post__category badge badge-pill badge-dark">
+                        <i class="fa fa-hand-pointer" aria-hidden="true"></i>
+                        @ads.numberofclicks | <i class="fa fa-eye" aria-hidden="true"></i> @ads.numberofview
+                    </p>
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title">
+                        <a class="text-fiord-blue" href="@Url.Action("UpdateAd", "Advertisement" , new { id = ads.id })">@ads.advertisingname</a>
+                    </h5>
+                    <span class="text-muted">@ads.advertisingstart.ToString("dd.MM.yyyy") - @ads.advertisingend.ToString("dd.MM.yyyy") </span>
+                    <br />
+                    @if (ads.advertising260x230 == "true")
+                    {<span class="text-muted"><b style="color:#ae3b3b">260x230</b></span>}
+                    @if (ads.advertising320x270 == "true")
+                    {<span class="text-muted"><b style="color:#ae3b3b">320x270</b></span>}
+                    @if (ads.advertising320x540 == "true")
+                    {<span class="text-muted"><b style="color:#ae3b3b">320x540</b></span>}
+
+                    @if (ads.advertising728x90 == "true")
+                    {<span class="text-muted"><b style="color:#ae3b3b">728x90</b></span>}
+                    @if (ads.advertising728x90banner == "true")
+                    {<span class="text-muted"><b style="color:#ae3b3b">728x90 Banner</b></span>}
+                </div>
+            </div>
+        </div>
+    }
+</div>
+<div class="page-header row no-gutters py-4">
+
+    <div class="col-12 col-sm-12 text-center text-sm-left mb-0">
+        <span class="text-uppercase page-subtitle">Gelecek Reklamlar</span>
+    </div>
+</div>
+@{Html.RenderAction("FutureAd", "AdminPartial");}
+<div class="page-header row no-gutters py-4">
+
+    <div class="col-12 col-sm-12 text-center text-sm-left mb-0">
+        <span class="text-uppercase page-subtitle">Biten Reklamlar</span>
+    </div>
+</div>
+@{Html.RenderAction("ExpiredAd", "AdminPartial");}
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+
+            @{Html.RenderAction("AdAdd", "AdminPartial");}
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="exampleModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <form action="@Url.Action("SearchAd", "Advertisement")" method="post" enctype="multipart/form-data" class="form-group">
+                <div class="modal-header">
+                    <h5 class="modal-title text-center" id="exampleModalLabel">Reklam Ara</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <input type="text" name="searchkey" placeholder="Reklam Ara" required class="form-control" /><br />
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Kapat</button>
+                    <input type="submit" class="btn btn-primary" value="Ara" />
+                </div>
+            </form>
+
+        </div>
+    </div>
+</div>

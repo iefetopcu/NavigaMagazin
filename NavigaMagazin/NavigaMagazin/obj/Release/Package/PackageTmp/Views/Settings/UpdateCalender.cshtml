@@ -1,0 +1,114 @@
+﻿@model NavigaMagazin.Models.Entity.calendarTable
+@{
+    ViewBag.Title = "UpdateCalender";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+<script src="https://cdn.ckeditor.com/4.15.1/full/ckeditor.js"></script>
+<div class="main-content-container container-fluid px-4">
+
+    <div class="page-header row no-gutters py-4">
+        <div class="col-12 col-sm-4 text-center text-sm-left mb-0">
+            <span class="text-uppercase page-subtitle"></span>
+            <h3 class="page-title">Etkinlik Güncelle</h3>
+        </div>
+    </div>
+
+    @using (Html.BeginForm("UpdateCalender", "Settings", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        <div class="row">
+            <div class="col-lg-9 col-md-12">
+                <div class="card card-small mb-3">
+                    <div class="card-body">
+
+                        @Html.TextBoxFor(m => m.calendartitle, new { @class = "form-control form-control-lg mb-3", @maxlength = "65" })
+
+                        <div class="add-new-post__editor mb-1">
+
+                            <textarea name="calendercontent">@Model.calendercontent</textarea><br /><br />
+                            <script>
+                                CKEDITOR.replace('calendercontent');
+                            </script>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-12">
+
+
+                <div class='card card-small mb-3'>
+                    <div class="card-header border-bottom">
+                        <h6 class="m-0">Tarih ve Yer</h6>
+                    </div>
+                    <div class='card-body p-0'>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item p-3">
+
+
+                                <span class="d-flex mb-2">
+                                    <i class="material-icons mr-1">calendar_today</i>
+                                    <strong class="mr-1">Başlama Zamanı </strong>
+
+                                </span>
+
+                                <span class="d-flex mb-2">
+
+                                    <input type="text" name="calendestartrdate" class="form-control" value="@Model.calendestartrdate" required id="datepicker"><br />
+                                </span>
+
+                                <span class="d-flex mb-2">
+                                    <i class="material-icons mr-1">calendar_today</i>
+                                    <strong class="mr-1">Bitiş Zamanı </strong>
+                                    
+                                </span>
+
+                                <span class="d-flex mb-2">
+                                   
+                                    <input type="text" name="calenderenddate" class="form-control" value="@Model.calenderenddate" required id="datepicker2"><br />
+                                </span>
+
+                            </li>
+                            <li class="list-group-item p-3">
+
+
+                                <span class="d-flex mb-2">
+                                    <i class="material-icons mr-1">calendar_today</i>
+                                    <strong class="mr-1">Yer </strong>
+                                    <input type="text" name="calenderlocation" class="form-control" value="@Model.calenderlocation" required><br />
+                                </span>
+
+                            </li>
+                            <li class="list-group-item d-flex px-3">
+
+                                <button class="btn btn-sm btn-accent ml-auto">
+                                    <i class="material-icons">file_copy</i> Yayınla
+                                </button>
+                            </li>
+                        </ul>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    }
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.0/themes/base/jquery-ui.css">
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.js"></script>
+    <script>
+        $(function () {
+            $("#datepicker").datepicker({
+                dateFormat: 'yy-mm-dd'
+            }).datepicker();
+            ;
+        });
+
+        $(function () {
+            $("#datepicker2").datepicker({
+                dateFormat: 'yy-mm-dd'
+            }).datepicker();
+            ;
+        });
+    </script>
+</div>
+

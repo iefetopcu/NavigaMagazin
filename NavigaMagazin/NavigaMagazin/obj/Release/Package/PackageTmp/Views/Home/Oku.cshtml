@@ -1,0 +1,83 @@
+﻿@model NavigaMagazin.Models.Entity.ContentTable
+@{
+    ViewBag.Title = Model.posttitle;
+    ViewBag.Description = Model.postspottext;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<style>
+    p img{
+        max-width:100%!important;
+    }
+</style>
+<div class="container">
+    <div class="row row-m">
+        <!-- START MAIN CONTENT -->
+        <div class="col-sm-8 col-p  main-content">
+            <div class="theiaStickySidebar">
+                <div class="post_details_inner">
+                    <div class="post_details_block details_block3">
+                        <div class="post-header">
+                            <ul class="td-category">
+                                <li><a class="post-category" href="#">@Model.CategoryTable.categoryname</a></li>
+
+                            </ul>
+                            <h2 style="padding-bottom:20px;">@Model.posttitle</h2>
+
+                        </div>
+                        <figure class="social-icon">
+                            <img src="@Model.postphoto" class="img-responsive" alt="@Model.posttitle" />
+
+                            <div>
+                                <a href="https://www.facebook.com/sharer/sharer.php?u=@Request.Url.ToString()" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                                <a href="http://www.twitter.com/share? &url=@Request.Url.ToString()" target="_blank"><i class="fab fa-twitter"></i></a>
+                                @*<a href=""><i class="fab fa-instagram"></i></a>*@
+                                <a href="https://wa.me/?text= @Model.posttitle @Request.Url.ToString()" target="_blank"><i class="fab fa-whatsapp" style="background-color: #25D366;"></i></a>
+                            </div>
+                        </figure>
+                        <div class="row">
+                            <div class="col-lg-5">
+                                <ul class="authar-info">
+                                    <li class="author"><a href="@Url.Action("ShowUser", "Home" , new {id = Model.UserTable.id})">@Model.UserTable.username @Model.UserTable.usersurname</a></li>
+                                    <li class="date">@Model.releasetime.Value.ToString("dd.MM.yyyy")</li>
+                                    @*<li class="view">@Model.postview Görüntülenme</li>
+                                    <li class="view">@Model.postlike <i class="fa fa-thumbs-up" aria-hidden="true"></i></li>
+                                    <li class="view">@Model.postdislike <i class="fa fa-thumbs-down" aria-hidden="true"></i></li>*@
+                                </ul>
+                            </div>
+                            <div class="col-lg-4">
+                                <ul class="authar-info">
+                                   
+                                    <li class="view">@Model.postview Görüntülenme </li>
+                                    <li class="view">@Model.postlike <i class="fa fa-thumbs-up" aria-hidden="true"></i></li>
+                                    @*<li class="view">@Model.postdislike <i class="fa fa-thumbs-down" aria-hidden="true"></i></li>*@
+                                </ul>
+                            </div>
+                            <div class="col-lg-3">
+
+                                <a href="@Url.Action("LikePost", "Home" , new { id = Model.id })" class="btn btn-news pull-right">
+                                    <i class="fa fa-thumbs-up" aria-hidden="true"></i>
+                                </a>
+                                @*<a href="@Url.Action("DislikePost", "Home" , new { id = Model.id })" class="btn btn-news">
+                                    <i class="fa fa-thumbs-down" aria-hidden="true"></i>
+                                </a>*@
+                            </div>
+                        </div>
+                            <br />
+                            <p>@Model.postspottext</p>
+                            <p>@Html.Raw(Model.postcontent)</p>
+
+
+
+                          
+
+                        </div>
+                </div>
+                <!-- END OF /. MAIN CONTENT -->
+                <!-- START SIDE CONTENT -->
+                <!-- END OF /. SIDE CONTENT -->
+            </div>
+        </div>
+        @{Html.RenderAction("Sidecontent", "Partial");}
+    </div>
+</div>
+

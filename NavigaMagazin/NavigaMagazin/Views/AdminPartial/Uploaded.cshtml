@@ -1,0 +1,38 @@
+﻿@using NavigaMagazin.Models.Entity
+
+<div class="row">
+    <div class="col-lg-12">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+
+                    <th scope="col">Dosya Adı</th>
+                    <th scope="col">Fotoğraf</th>
+                    <th scope="col">İşlem</th>
+
+                </tr>
+            </thead>
+            <tbody>
+
+                @foreach (var upload in Model)
+                {
+
+                    <tr>
+
+                        <td>@upload.uploadname</td>
+                        <td><img src="@upload.uploadurl" style="height:60px;" /></td>
+                        <td>
+                            <a href="https://www.navigamagazin.com/@upload.uploadlink" onclick="copyURI(event)">Link</a>
+
+                            <a href="@Url.Action("UploadDelete", "Contentdetail" , new { id = upload.id })" onclick="return confirm('@upload.uploadname Dosyasını Silmek İstediğinize Emin Misiniz?')"><i class="fas fa-trash"></i></a>
+                        </td>
+                    </tr>
+
+                }
+
+
+            </tbody>
+        </table>
+    </div>
+</div>
+

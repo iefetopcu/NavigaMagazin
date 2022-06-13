@@ -1,0 +1,73 @@
+﻿@using NavigaMagazin.Models.Entity
+@{
+    ViewBag.Title = "SearchAd";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+<script>
+    $('#myModal').on('shown.bs.modal', function () {
+        $('#myInput').trigger('focus')
+    })
+
+</script>
+<div class="page-header row no-gutters py-4">
+    <div class="col-6 col-sm-6 text-center text-sm-left mb-0">
+        <span class="text-uppercase page-subtitle">Aranan Reklam :  @ViewBag.Words</span>
+    </div>
+    <div class="col-6 col-sm-6 text-center mb-0 ">
+        <button class="btn btn-primary pull-right" data-toggle="modal" data-target="#exampleModal2">Reklam Ara</button>
+
+    </div>
+</div>
+<div class="row">
+    @foreach (var searchad in Model)
+    {
+        <div class="col-lg-3 col-md-6 col-sm-12 mb-4">
+            <div class="card card-small card-post card-post--1">
+                <div class="card-post__image" style="background-image: url('@searchad.advertisingphoto');">
+                    <a href="@Url.Action("DeleteAd", "Advertisement" , new { id = searchad.id })" onclick="return confirm('Bu Reklamı Silmek İstediğinize Emin Misiniz?')"><i class="material-icons badge badge-pill badge-secondary" style="color:white; padding:10px;">
+    <i class="fa fa-trash" aria-hidden="true"></i>
+</i></a>
+                    <p class="card-post__category badge badge-pill badge-dark">
+                        <i class="fa fa-hand-pointer" aria-hidden="true"></i>
+                        @searchad.numberofclicks | <i class="fa fa-eye" aria-hidden="true"></i> @searchad.numberofview
+                    </p>
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title">
+                        <a class="text-fiord-blue" href="@Url.Action("UpdateAd", "Advertisement" , new { id = searchad.id })">@searchad.advertisingname</a>
+                    </h5>
+                    <span class="text-muted">@searchad.advertisingstart.ToString("dd.MM.yyyy") - @searchad.advertisingend.ToString("dd.MM.yyyy") </span>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+
+
+
+
+
+
+
+<div class="modal fade" id="exampleModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <form action="@Url.Action("SearchAd", "Advertisement")" method="post" enctype="multipart/form-data" class="form-group">
+                <div class="modal-header">
+                    <h5 class="modal-title text-center" id="exampleModalLabel">Reklam Ara</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <input type="text" name="searchkey" placeholder="Reklam Ara" required class="form-control" /><br />
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Kapat</button>
+                    <input type="submit" class="btn btn-primary" value="Ara" />
+                </div>
+            </form>
+
+        </div>
+    </div>
+</div>

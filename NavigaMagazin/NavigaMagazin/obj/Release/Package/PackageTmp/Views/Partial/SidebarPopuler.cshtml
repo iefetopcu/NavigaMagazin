@@ -1,0 +1,8 @@
+﻿@using NavigaMagazin.Models.Entity
+@{int i = 1;}
+@foreach (var siderbarpopuler in Model)
+{
+    <li><span class="count">@i</span><span class="text"><a href="@Url.Action("Oku", "Home", new { url = siderbarpopuler.url })">@siderbarpopuler.posttitle</a></span></li>
+    {i++;
+    }
+}

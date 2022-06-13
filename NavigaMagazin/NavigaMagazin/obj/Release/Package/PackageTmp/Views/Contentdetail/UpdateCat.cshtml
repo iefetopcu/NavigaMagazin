@@ -1,0 +1,34 @@
+﻿@model NavigaMagazin.Models.Entity.CategoryTable
+@{
+    ViewBag.Title = "UpdateCat";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+<div class="page-header row no-gutters py-4">
+    <div class="col-12 col-sm-12 text-center text-sm-left mb-0">
+        <span class="text-uppercase page-subtitle">Kategori Güncelle</span>
+    </div>
+</div>
+<hr />
+@using (Html.BeginForm("UpdateCat", "Contentdetail", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <div class="main-content-container container-fluid px-12">
+        <div class="row">
+            <div class="col-lg-12 col-md-12">
+                <div class="card card-small mb-9">
+                    <div class="card-body">
+
+                        <label>Kategori Adı</label>
+                        @Html.TextBoxFor(m => m.categoryname, new { @class = "form-control form-control-lg mb-3" })
+                        @Html.DropDownListFor(m => m.menuid, (List<SelectListItem>)ViewBag.menus, new { @class = "ml-auto" })
+                        <br /><br />
+                        <button class="btn btn-sm btn-accent ml-auto">
+                            <i class="material-icons">file_copy</i> Kaydet
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+}

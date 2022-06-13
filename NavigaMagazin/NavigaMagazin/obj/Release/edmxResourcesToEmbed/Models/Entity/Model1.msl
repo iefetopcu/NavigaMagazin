@@ -1,0 +1,248 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="navigaModelStoreContainer" CdmEntityContainer="navigaEntities">
+    <EntitySetMapping Name="AdvertisingTables">
+      <EntityTypeMapping TypeName="navigaModel.AdvertisingTable">
+        <MappingFragment StoreEntitySet="AdvertisingTable">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="advertisingname" ColumnName="advertisingname" />
+          <ScalarProperty Name="advertisinglink" ColumnName="advertisinglink" />
+          <ScalarProperty Name="advertisingphoto" ColumnName="advertisingphoto" />
+          <ScalarProperty Name="advertisingstart" ColumnName="advertisingstart" />
+          <ScalarProperty Name="advertisingend" ColumnName="advertisingend" />
+          <ScalarProperty Name="createtime" ColumnName="createtime" />
+          <ScalarProperty Name="updatetime" ColumnName="updatetime" />
+          <ScalarProperty Name="advertising260x230" ColumnName="advertising260x230" />
+          <ScalarProperty Name="advertising320x270" ColumnName="advertising320x270" />
+          <ScalarProperty Name="advertising320x540" ColumnName="advertising320x540" />
+          <ScalarProperty Name="advertising728x90banner" ColumnName="advertising728x90banner" />
+          <ScalarProperty Name="advertising728x90" ColumnName="advertising728x90" />
+          <ScalarProperty Name="isaktif" ColumnName="isaktif" />
+          <ScalarProperty Name="fixedad" ColumnName="fixedad" />
+          <ScalarProperty Name="numberofclicks" ColumnName="numberofclicks" />
+          <ScalarProperty Name="numberofview" ColumnName="numberofview" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="calendarTables">
+      <EntityTypeMapping TypeName="navigaModel.calendarTable">
+        <MappingFragment StoreEntitySet="calendarTable">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="calendartitle" ColumnName="calendartitle" />
+          <ScalarProperty Name="calendercontent" ColumnName="calendercontent" />
+          <ScalarProperty Name="calenderlocation" ColumnName="calenderlocation" />
+          <ScalarProperty Name="creationtime" ColumnName="creationtime" />
+          <ScalarProperty Name="url" ColumnName="url" />
+          <ScalarProperty Name="calendestartrdate" ColumnName="calendestartrdate" />
+          <ScalarProperty Name="calenderenddate" ColumnName="calenderenddate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CategoryTables">
+      <EntityTypeMapping TypeName="navigaModel.CategoryTable">
+        <MappingFragment StoreEntitySet="CategoryTable">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="categoryname" ColumnName="categoryname" />
+          <ScalarProperty Name="menuid" ColumnName="menuid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CommentTables">
+      <EntityTypeMapping TypeName="navigaModel.CommentTable">
+        <MappingFragment StoreEntitySet="CommentTable">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="userid" ColumnName="userid" />
+          <ScalarProperty Name="postid" ColumnName="postid" />
+          <ScalarProperty Name="commenttitle" ColumnName="commenttitle" />
+          <ScalarProperty Name="commentcontent" ColumnName="commentcontent" />
+          <ScalarProperty Name="commenttime" ColumnName="commenttime" />
+          <ScalarProperty Name="approved" ColumnName="approved" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ContentTables">
+      <EntityTypeMapping TypeName="navigaModel.ContentTable">
+        <MappingFragment StoreEntitySet="ContentTable">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="categoryid" ColumnName="categoryid" />
+          <ScalarProperty Name="userid" ColumnName="userid" />
+          <ScalarProperty Name="posttitle" ColumnName="posttitle" />
+          <ScalarProperty Name="postcontent" ColumnName="postcontent" />
+          <ScalarProperty Name="postspottext" ColumnName="postspottext" />
+          <ScalarProperty Name="postphoto" ColumnName="postphoto" />
+          <ScalarProperty Name="url" ColumnName="url" />
+          <ScalarProperty Name="isaktif" ColumnName="isaktif" />
+          <ScalarProperty Name="postview" ColumnName="postview" />
+          <ScalarProperty Name="postlike" ColumnName="postlike" />
+          <ScalarProperty Name="postdislike" ColumnName="postdislike" />
+          <ScalarProperty Name="createtime" ColumnName="createtime" />
+          <ScalarProperty Name="updatetime" ColumnName="updatetime" />
+          <ScalarProperty Name="releasetime" ColumnName="releasetime" />
+          <ScalarProperty Name="approved" ColumnName="approved" />
+          <ScalarProperty Name="postshowroom" ColumnName="postshowroom" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="EbultenTables">
+      <EntityTypeMapping TypeName="navigaModel.EbultenTable">
+        <MappingFragment StoreEntitySet="EbultenTable">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="ebultenmail" ColumnName="ebultenmail" />
+          <ScalarProperty Name="registertime" ColumnName="registertime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="magazineTables">
+      <EntityTypeMapping TypeName="navigaModel.magazineTable">
+        <MappingFragment StoreEntitySet="magazineTable">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="coverphoto" ColumnName="coverphoto" />
+          <ScalarProperty Name="magazinetitle" ColumnName="magazinetitle" />
+          <ScalarProperty Name="magazinecontent" ColumnName="magazinecontent" />
+          <ScalarProperty Name="magazinetime" ColumnName="magazinetime" />
+          <ScalarProperty Name="creationtime" ColumnName="creationtime" />
+          <ScalarProperty Name="url" ColumnName="url" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ManualLogs">
+      <EntityTypeMapping TypeName="navigaModel.ManualLog">
+        <MappingFragment StoreEntitySet="ManualLog">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="logexp" ColumnName="logexp" />
+          <ScalarProperty Name="whodidit" ColumnName="whodidit" />
+          <ScalarProperty Name="processingtime" ColumnName="processingtime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MenuTables">
+      <EntityTypeMapping TypeName="navigaModel.MenuTable">
+        <MappingFragment StoreEntitySet="MenuTable">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="menuname" ColumnName="menuname" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MessageTables">
+      <EntityTypeMapping TypeName="navigaModel.MessageTable">
+        <MappingFragment StoreEntitySet="MessageTable">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="messagefullname" ColumnName="messagefullname" />
+          <ScalarProperty Name="messageemail" ColumnName="messageemail" />
+          <ScalarProperty Name="messagesubject" ColumnName="messagesubject" />
+          <ScalarProperty Name="messagedescription" ColumnName="messagedescription" />
+          <ScalarProperty Name="messagetime" ColumnName="messagetime" />
+          <ScalarProperty Name="messagestatu" ColumnName="messagestatu" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="modalTables">
+      <EntityTypeMapping TypeName="navigaModel.modalTable">
+        <MappingFragment StoreEntitySet="modalTable">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="modalphoto" ColumnName="modalphoto" />
+          <ScalarProperty Name="modallink" ColumnName="modallink" />
+          <ScalarProperty Name="modalactive" ColumnName="modalactive" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="moonCalendars">
+      <EntityTypeMapping TypeName="navigaModel.moonCalendar">
+        <MappingFragment StoreEntitySet="moonCalendar">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="moonPhotoUrl" ColumnName="moonPhotoUrl" />
+          <ScalarProperty Name="moonTime" ColumnName="moonTime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="questionTables">
+      <EntityTypeMapping TypeName="navigaModel.questionTable">
+        <MappingFragment StoreEntitySet="questionTable">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="userid" ColumnName="userid" />
+          <ScalarProperty Name="expertid" ColumnName="expertid" />
+          <ScalarProperty Name="questiontitle" ColumnName="questiontitle" />
+          <ScalarProperty Name="questioncontent" ColumnName="questioncontent" />
+          <ScalarProperty Name="questionanswer" ColumnName="questionanswer" />
+          <ScalarProperty Name="questiontime" ColumnName="questiontime" />
+          <ScalarProperty Name="isaktif" ColumnName="isaktif" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="stormTables">
+      <EntityTypeMapping TypeName="navigaModel.stormTable">
+        <MappingFragment StoreEntitySet="stormTable">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="stormname" ColumnName="stormname" />
+          <ScalarProperty Name="releasetime" ColumnName="releasetime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="navigaModel.sysdiagram">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UploadTables">
+      <EntityTypeMapping TypeName="navigaModel.UploadTable">
+        <MappingFragment StoreEntitySet="UploadTable">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="uploadname" ColumnName="uploadname" />
+          <ScalarProperty Name="uploadurl" ColumnName="uploadurl" />
+          <ScalarProperty Name="uploadlink" ColumnName="uploadlink" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UserRoleTables">
+      <EntityTypeMapping TypeName="navigaModel.UserRoleTable">
+        <MappingFragment StoreEntitySet="UserRoleTable">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="rolename" ColumnName="rolename" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UserTables">
+      <EntityTypeMapping TypeName="navigaModel.UserTable">
+        <MappingFragment StoreEntitySet="UserTable">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="username" ColumnName="username" />
+          <ScalarProperty Name="usersurname" ColumnName="usersurname" />
+          <ScalarProperty Name="useremail" ColumnName="useremail" />
+          <ScalarProperty Name="userphoto" ColumnName="userphoto" />
+          <ScalarProperty Name="userpassword" ColumnName="userpassword" />
+          <ScalarProperty Name="userroleid" ColumnName="userroleid" />
+          <ScalarProperty Name="isaktif" ColumnName="isaktif" />
+          <ScalarProperty Name="creationtime" ColumnName="creationtime" />
+          <ScalarProperty Name="updatetime" ColumnName="updatetime" />
+          <ScalarProperty Name="userfacebook" ColumnName="userfacebook" />
+          <ScalarProperty Name="usertwitter" ColumnName="usertwitter" />
+          <ScalarProperty Name="useryoutube" ColumnName="useryoutube" />
+          <ScalarProperty Name="userlinkedin" ColumnName="userlinkedin" />
+          <ScalarProperty Name="approved" ColumnName="approved" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="videoTables">
+      <EntityTypeMapping TypeName="navigaModel.videoTable">
+        <MappingFragment StoreEntitySet="videoTable">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="videotitle" ColumnName="videotitle" />
+          <ScalarProperty Name="videodescription" ColumnName="videodescription" />
+          <ScalarProperty Name="videolink" ColumnName="videolink" />
+          <ScalarProperty Name="url" ColumnName="url" />
+          <ScalarProperty Name="releasetime" ColumnName="releasetime" />
+          <ScalarProperty Name="createtime" ColumnName="createtime" />
+          <ScalarProperty Name="updatetime" ColumnName="updatetime" />
+          <ScalarProperty Name="isaktif" ColumnName="isaktif" />
+          <ScalarProperty Name="showroom" ColumnName="showroom" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

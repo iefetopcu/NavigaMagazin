@@ -1,0 +1,22 @@
+﻿@using NavigaMagazin.Models.Entity
+@foreach (var motoryat in Model)
+{
+
+    <div class="col-xs-6 col-sm-6 col-md-6 col-padding">
+        <div class="grid-item">
+            <div class="grid-item-img">
+                <a href="@Url.Action("Oku","Home", new { url = motoryat.url })">
+                    <img src="@motoryat.postphoto" class="img-responsive" alt="@motoryat.posttitle">
+                    @*<div class="link-icon"><i class="fa fa-camera"></i></div>*@
+                </a>
+            </div>
+            <h5><a href="@Url.Action("Oku","Home", new { url = motoryat.url })" class="title">@motoryat.posttitle</a></h5>
+            <ul class="authar-info">
+                <li>@motoryat.releasetime.ToString("dd.MM.yyyy")</li>
+                <li class="like hidden-sm">@motoryat.postlike</li>
+            </ul>
+            <p>@motoryat.postspottext</p>
+        </div>
+    </div>
+
+}

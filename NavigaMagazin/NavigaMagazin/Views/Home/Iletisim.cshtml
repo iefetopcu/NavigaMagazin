@@ -1,0 +1,153 @@
+﻿
+@{
+    ViewBag.Title = "Iletisim Sayfası ";
+    ViewBag.Description = "Naviga Magazin İletişim Sayfası";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="page-title">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-sm-6 col-md-6">
+                <h1><strong>İletişim</strong></h1>
+            </div>
+            <div class="col-xs-12 col-sm-6 col-md-6">
+                <ol class="breadcrumb">
+                    <li><a href="@Url.Action("Index", "Home")">Anasayfa</a></li>
+                    <li class="active"><a href="@Url.Action("Iletisim", "Home")">İletişim</a></li>
+                </ol>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- END OF /. PAGE TITLE -->
+<!-- *** START PAGE MAIN CONTENT *** -->
+<main class="page_main_wrapper">
+    <div class="container">
+        <div class="row row-m">
+            <div class="col-sm-8 main-content col-p">
+                <div class="theiaStickySidebar">
+                    <!-- START CONTACT FORM AREA -->
+                    <div class="contact_form_inner">
+                        <div class="panel_inner">
+                            <div class="panel_header">
+                                @if (ViewBag.contact == "ok")
+                                {                               
+                                        <div class="alert alert-success text-center" role="alert">
+                                            <h4 class="alert-heading">Başarılı !</h4><br />
+                                            <p>Göndermiş olduğunuz mesaj bize ulaştı </p>
+                                            <p class="mb-0">Sizinle en yakın sürede irtibata geçeceğiz.</p>
+                                        </div>                                 
+                                }
+                                <h4><strong>Size değer veriyoruz !</strong> Bizimle iletişime geçin. </h4>
+                            </div>
+                            <div class="panel_body">
+                                <p>
+                                    Bizimle iletişime geçmek için aşağıdaki formu doldurabilirsiniz.
+                                </p>
+                                <form class="comment-form" action="@Url.Action("Iletisim", "Home")" method="post">
+                                    <div class="row">
+                                        <div class="col-sm-6">
+                                            <div class="form-group">
+                                                <label for="name">Ad Soyad*</label>
+                                                <input type="text" class="form-control" id="name" name="messagefullname" placeholder="Ad Soyad*">
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <label for="email">E-Mail*</label>
+                                            <div class="form-group">
+                                                <input type="email" class="form-control" id="email" name="messageemail" placeholder="E Mail Adresiniz">
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-12">
+                                            <div class="form-group">
+                                                <label for="name">Başlık</label>
+                                                <input type="text" class="form-control" id="website" name="messagesubject" placeholder="Mesaj Başlığınız">
+                                            </div>
+                                        </div>                                       
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="email">Mesajınız</label>
+                                        <textarea class="form-control" id="message" name="messagedescription" placeholder="Mesajınız*" rows="5"></textarea>
+                                    </div>
+                                    
+                                    <input type="submit" class="btn btn-news" value="Gönder" />
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- END OF CONTACT FORM AREA -->
+                </div>
+            </div>
+            <div class="col-sm-4 rightSidebar col-p">
+                <div class="theiaStickySidebar">
+                    <!-- START CONTACT INFO -->
+                    <div class="panel_inner">
+                        <div class="panel_header">
+                            <h4><strong>İletişim </strong>Bilgileri </h4>
+                        </div>
+                        <div class="panel_body">
+                            <address> <strong>Naviga Magazin </strong><br> Kalamış Fener Cad. İskele Sok.<br /> (Gamze Sok.) No: 2 Kalamış 34025 <br />Kadıköy-İstanbul </address>
+                            <address> <strong>Naviga İletişim </strong><br> <abbr title="Phone">Telefon : </abbr> 0 (216) 418 51 91<br> Fax : 0 (216) 418 59 89<br> </address>
+                            <address> <strong>Mail</strong><br> <a href="mailto:okuyucu@navigamagazin.com">okuyucu@navigamagazin.com</a> </address>
+                        </div>
+                    </div>
+                    <!-- END OF /. CONTACT INFO -->
+                    <!-- START SOCIAL ICON -->
+                    <div class="social-media-inner">
+                        <ul class="social-media clearfix">
+                            <li>
+                                <a href="#" class="rss">
+                                    <i class="fas fa-rss"></i>
+                                    
+                                    <p>E-Bulten</p>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://www.facebook.com/NavigaMagazin?fref=ts" class="fb" target="_blank">
+                                    <i class="fab fa-facebook-f"></i>
+                                    
+                                    <p>Facebook</p>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://www.instagram.com/navigamagazin/" class="insta" target="_blank">
+                                    <i class="fab fa-instagram"></i>
+                                    
+                                    <p>Instagram</p>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://www.youtube.com/channel/UC5d0tuuHPACSCl_KDzupPDg" class="you_tube" target="_blank">
+                                    <i class="fab fa-youtube"></i>                             
+                                    <p>Youtube</p>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://twitter.com/NavigaMagazin" class="twitter" target="_blank">
+                                    <i class="fab fa-twitter"></i>
+                                    
+                                    <p>Twitter</p>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://tr.linkedin.com/company/naviga-magazin" class="fb" target="_blank">
+                                    <i class="fab fa-linkedin-in"></i>                           
+                                    <p>Linkedin</p>
+                                </a>
+                            </li>
+                        </ul> <!-- /.social icon -->
+                    </div>
+                    <!-- END OF /. SOCIAL ICON -->
+                </div>
+            </div>
+        </div>
+        <div class="panel_inner">
+            <div class="panel_body">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d12048.798211324262!2d29.04188!3d40.977111!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x752ed33e95cdb69!2sNaviga%20Dergisi!5e0!3m2!1str!2str!4v1627925252513!5m2!1str!2str" style="width:100%!important;" height="350" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+            </div>
+        </div>
+    </div>
+</main>
+<!-- *** END OF /. PAGE MAIN CONTENT *** -->
+<!-- START FOOTER -->

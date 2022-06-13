@@ -1,0 +1,44 @@
+﻿@using NavigaMagazin.Models.Entity
+@{
+    ViewBag.Title = "LogSearch";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+<div class="page-header row no-gutters py-4">
+    <div class="col-6 col-sm-6 text-center text-sm-left mb-0">
+        <span class="text-uppercase page-subtitle">Aranan Kelime : @ViewBag.Words</span>
+    </div>
+    <div class="col-6 col-sm-6 text-center text-sm-left mb-0">
+        <form action="@Url.Action("LogSearch", "Log")" method="post">
+            <input type="text" class="form-control" placeholder="Aranacak Kelime Yada Kullanıcı Adını Girip Enter'a basın" name="searchkey">
+        </form>
+    </div>
+</div>
+
+<table class="table table-striped">
+    <thead class="thead-dark">
+        <tr>
+
+            <th scope="col">Log Açıklaması</th>
+            <th scope="col">İşlem Yapan</th>
+            <th scope="col">Tarih</th>
+
+        </tr>
+    </thead>
+    <tbody>
+
+        @foreach (var log in Model)
+        {
+
+            <tr>
+
+                <td>@log.logexp</td>
+                <td>@log.whodidit</td>
+                <td>@log.processingtime.ToString("dd.MM.yyyy")</td>
+            </tr>
+
+        }
+
+
+    </tbody>
+</table>

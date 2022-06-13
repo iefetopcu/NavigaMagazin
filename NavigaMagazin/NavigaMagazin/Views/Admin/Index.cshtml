@@ -1,0 +1,179 @@
+﻿
+@{
+    ViewBag.Title = "Naviga Magazin Panel";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+<div class="page-header row no-gutters py-4">
+    <div class="col-6 col-sm-6 text-center text-sm-left mb-0">
+        <span class="text-uppercase page-subtitle">Naviga Magazin Yönetici Paneli</span>
+    </div>
+
+
+    <div class="col-6 col-sm-6 text-center mb-0 ">
+
+    </div>
+</div>
+<div class="row">
+    <div class="col-lg-12">
+        <a href="@Url.Action("MoonCalendar", "Admin")">Ay Takvimi</a>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-lg col-md-6 col-sm-6 mb-4">
+        <div class="stats-small stats-small--1 card card-small">
+            <div class="card-body p-0 d-flex">
+                <div class="d-flex flex-column m-auto">
+                    <div class="stats-small__data text-center">
+                        <span class="stats-small__label text-uppercase">Kullanıcılar</span>
+                        <h6 class="stats-small__value count my-3">@ViewBag.user</h6>
+                    </div>
+                    <div class="stats-small__data">
+                        Aktif Kullanıcı : @ViewBag.useractive <br />
+                        <span style="color:darkred">Yasaklanan Kullanıcı : @ViewBag.userpassive</span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <div class="col-lg col-md-6 col-sm-6 mb-4">
+        <div class="stats-small stats-small--1 card card-small">
+            <div class="card-body p-0 d-flex">
+                <div class="d-flex flex-column m-auto">
+                    <div class="stats-small__data text-center">
+                        <span class="stats-small__label text-uppercase">İçerikler</span>
+                        <h6 class="stats-small__value count my-3">@ViewBag.content</h6>
+                    </div>
+                    <div class="stats-small__data">
+                        Yayında olan İçerik :  @ViewBag.contentpublished<br />
+                        <span style="color:darkorange">Yayına girecek İçerik &rarr; @ViewBag.contentwillbe</span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <div class="col-lg col-md-6 col-sm-6 mb-4">
+        <div class="stats-small stats-small--1 card card-small">
+            <div class="card-body p-0 d-flex">
+                <div class="d-flex flex-column m-auto">
+                    <div class="stats-small__data text-center">
+                        <span class="stats-small__label text-uppercase">Videolar</span>
+                        <h6 class="stats-small__value count my-3">@ViewBag.video</h6>
+                    </div>
+                    <div class="stats-small__data">
+                        Yayında olan Video : @ViewBag.videopublished<br />
+                        <span style="color:darkorange">Yayına girecek Video &rarr; @ViewBag.videowillbe</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg col-md-6 col-sm-6 mb-4">
+        <div class="stats-small stats-small--1 card card-small">
+            <div class="card-body p-0 d-flex">
+                <div class="d-flex flex-column m-auto">
+                    <div class="stats-small__data text-center">
+                        <span class="stats-small__label text-uppercase">E-Bülten</span>
+                        <h6 class="stats-small__value count my-3">@ViewBag.ebulten</h6>
+                    </div>
+                    <div class="stats-small__data">
+                        E-Bulten Kullanıcı Sayısı : @ViewBag.ebulten<br />
+                        <a href="@Url.Action("Index", "Ebulten")">Tam Liste &rarr;</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg col-md-6 col-sm-6 mb-4">
+        <div class="stats-small stats-small--1 card card-small">
+            <div class="card-body p-0 d-flex">
+                <div class="d-flex flex-column m-auto">
+                    <div class="stats-small__data text-center">
+                        <span class="stats-small__label text-uppercase">Reklam</span>
+                        <h6 class="stats-small__value count my-3">@ViewBag.adtotal</h6>
+                    </div>
+                    <div class="stats-small__data">
+                        Aktif Reklam : @ViewBag.adactive<br />
+                        <span style="color:darkorange">Yayına girecek Reklam &rarr; @ViewBag.adwillbe</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-lg-4 col-md-12 col-sm-12 mb-4">
+        <div class="card card-small">
+            <div class="card-header border-bottom">
+                <h6 class="m-0">Onay Bekleyen İçerikler</h6>
+            </div>
+            <div class="card-body p-0">
+                <ul class="list-group list-group-small list-group-flush">
+                    <li class="list-group-item d-flex px-3">
+                        <span class="text-semibold text-fiord-blue"><b>İçerik</b></span>
+                        <span class="ml-auto text-right text-semibold text-reagent-gray">Kayıt Tarihi</span>
+                    </li>
+                    @{Html.RenderAction("Contentlist", "AdminPartial");}
+                </ul>
+            </div>
+            <div class="card-footer border-top">
+                <div class="row">
+
+                    <div class="col text-right view-report">
+                        <a href="@Url.Action("ApprovalRequest", "ContentDetail")">Onay Bekleyen İçerikler &rarr;</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-4 col-md-12 col-sm-12 mb-4">
+        <div class="card card-small">
+            <div class="card-header border-bottom">
+                <h6 class="m-0">Onay Bekleyen Kullanıcılar</h6>
+            </div>
+            <div class="card-body p-0">
+                <ul class="list-group list-group-small list-group-flush">
+                    <li class="list-group-item d-flex px-3">
+                        <span class="text-semibold text-fiord-blue">İsim Soyisim</span>
+                        <span class="ml-auto text-right text-semibold text-reagent-gray">Kayıt Tarihi</span>
+                    </li>
+                    @{Html.RenderAction("Userlist", "AdminPartial");}
+                </ul>
+            </div>
+            <div class="card-footer border-top">
+                <div class="row">
+                    <div class="col text-right view-report">
+                        <a href="@Url.Action("ApprovalRequest", "User")">Onay Bekleyen Kullanıcılar &rarr;</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-4 col-md-12 col-sm-12 mb-4">
+        <div class="card card-small">
+            <div class="card-header border-bottom">
+                <h6 class="m-0">Cevaplanacak Sorular</h6>
+            </div>
+            <div class="card-body p-0">
+                <ul class="list-group list-group-small list-group-flush">
+                    <li class="list-group-item d-flex px-3">
+                        <span class="text-semibold text-fiord-blue">Soru Başlığı</span>
+                        <span class="ml-auto text-right text-semibold text-reagent-gray">Kayıt Tarihi</span>
+
+                    </li>
+                    @{Html.RenderAction("QuestionList", "AdminPartial");}
+                </ul>
+            </div>
+            <div class="card-footer border-top">
+                <div class="row">
+                    <div class="col text-right view-report">
+                        <a href="@Url.Action("Sorular", "Admin")">Tüm Sorular &rarr;</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
